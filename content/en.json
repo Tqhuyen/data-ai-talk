@@ -31,7 +31,7 @@
       "kicker": "A talk for first-year Data Science & AI students",
       "title_html": "Data &amp; AI —<br>where do I <em>start?</em>",
       "sub": "What this field does, what to learn, and what the job really looks like — answered from your own questions.",
-      "speaker_label": "Speaker",
+      "speaker_label": "",
       "speaker": "Trần Quang Huyên",
       "meta_label": "Survey",
       "meta": "29 responses · 18 questions"
@@ -527,7 +527,18 @@
           "t": "Real-time data",
           "d": "A ride-hailing app needs driver locations every second → a streaming pipeline (Kafka) feeds the matching system."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "de",
+        "l": [
+          "App",
+          "Web",
+          "Stores",
+          "ETL /\nStreaming",
+          "Warehouse",
+          "BI · ML"
+        ]
+      }
     },
     {
       "type": "role",
@@ -555,7 +566,16 @@
           "t": "Checkout A/B test",
           "d": "Compare 2 versions with a statistical test → ship the one that lifts orders. Today's survey case study is Data Analyst work too."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "da",
+        "l": [
+          "Data",
+          "Analysis",
+          "Channel B\n↓ 15%",
+          "Decision"
+        ]
+      }
     },
     {
       "type": "role",
@@ -583,7 +603,16 @@
           "t": "Credit scoring",
           "d": "A bank predicts repayment ability from transaction history → faster loan approval, fewer bad debts."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "ds",
+        "l": [
+          "History",
+          "Model",
+          "82%",
+          "churn risk"
+        ]
+      }
     },
     {
       "type": "role",
@@ -611,7 +640,16 @@
           "t": "Fraud detection",
           "d": "Every card transaction is risk-scored by a model right before approval."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "mle",
+        "l": [
+          "Notebook",
+          "API ·\nDocker",
+          "Product",
+          "Monitor → retrain"
+        ]
+      }
     },
     {
       "type": "role",
@@ -639,7 +677,17 @@
           "t": "Customer-service agent",
           "d": "Looks up orders, reschedules, files tickets by calling system APIs — not just replying with text."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "ai",
+        "l": [
+          "Question",
+          "LLM",
+          "Docs (RAG)",
+          "Tools / APIs",
+          "Answer\n+ sources"
+        ]
+      }
     },
     {
       "type": "qa",

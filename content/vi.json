@@ -31,7 +31,7 @@
       "kicker": "Chia sẻ cùng sinh viên năm nhất · Khoa học dữ liệu & Trí tuệ nhân tạo",
       "title_html": "Data &amp; AI —<br>bắt đầu <em>từ đâu?</em>",
       "sub": "Ngành này làm gì, cần học gì, và đi làm thật sự trông như thế nào — trả lời từ chính câu hỏi của các bạn.",
-      "speaker_label": "Diễn giả",
+      "speaker_label": "",
       "speaker": "Trần Quang Huyên",
       "meta_label": "Khảo sát",
       "meta": "29 câu trả lời · 18 câu hỏi"
@@ -527,7 +527,18 @@
           "t": "Dữ liệu thời gian thực",
           "d": "App gọi xe cần vị trí tài xế từng giây → luồng streaming (Kafka) đưa dữ liệu tới hệ thống ghép chuyến."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "de",
+        "l": [
+          "App",
+          "Web",
+          "Cửa hàng",
+          "ETL /\nStreaming",
+          "Kho dữ liệu",
+          "BI · ML"
+        ]
+      }
     },
     {
       "type": "role",
@@ -555,7 +566,16 @@
           "t": "A/B test trang thanh toán",
           "d": "So sánh 2 phiên bản, kiểm định thống kê → chọn bản tăng tỉ lệ đặt hàng. Case study khảo sát hôm nay cũng là việc của Data Analyst."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "da",
+        "l": [
+          "Dữ liệu",
+          "Phân tích",
+          "Kênh B\n↓ 15%",
+          "Quyết định"
+        ]
+      }
     },
     {
       "type": "role",
@@ -583,7 +603,16 @@
           "t": "Chấm điểm tín dụng",
           "d": "Ngân hàng dự đoán khả năng trả nợ từ lịch sử giao dịch → duyệt vay nhanh hơn, ít nợ xấu hơn."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "ds",
+        "l": [
+          "Dữ liệu cũ",
+          "Mô hình",
+          "82%",
+          "khả năng rời bỏ"
+        ]
+      }
     },
     {
       "type": "role",
@@ -611,7 +640,16 @@
           "t": "Phát hiện gian lận",
           "d": "Mỗi giao dịch thẻ được mô hình chấm điểm rủi ro ngay trước khi duyệt."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "mle",
+        "l": [
+          "Notebook",
+          "API ·\nDocker",
+          "Sản phẩm",
+          "Giám sát → huấn luyện lại"
+        ]
+      }
     },
     {
       "type": "role",
@@ -639,7 +677,17 @@
           "t": "Agent chăm sóc khách hàng",
           "d": "Tự tra cứu đơn hàng, đổi lịch, tạo ticket bằng cách gọi API hệ thống — không chỉ trả lời bằng chữ."
         }
-      ]
+      ],
+      "diagram": {
+        "kind": "ai",
+        "l": [
+          "Câu hỏi",
+          "LLM",
+          "Tài liệu (RAG)",
+          "Công cụ / API",
+          "Trả lời\n+ nguồn"
+        ]
+      }
     },
     {
       "type": "qa",

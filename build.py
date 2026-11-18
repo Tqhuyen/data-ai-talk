@@ -276,6 +276,9 @@ CSS = r"""
 .role .hd{position:absolute;left:var(--pad);right:var(--pad);top:130px;display:flex;flex-direction:column;gap:14px}
 .role .hd .h-xl{font-size:96px}
 .role .hd .tg{font-size:34px;line-height:1.35;color:#333}
+.role .dg{position:absolute;left:1080px;right:var(--pad);top:104px;height:296px}
+.role .dg svg{width:680px;height:296px;max-width:none;max-height:none}
+.role .hd{width:880px;right:auto}
 .role .rn{position:absolute;right:var(--pad);top:120px;font:800 200px/1 var(--display);color:var(--red);letter-spacing:-.05em}
 .role .c1{position:absolute;left:var(--pad);width:760px;top:430px}
 .role .c2{position:absolute;left:1000px;right:var(--pad);top:430px}
@@ -347,7 +350,7 @@ def render_cover(s, m, ctx):
 <div class="sq r" style="--i:3;right:330px;top:400px;width:170px;height:170px"></div>
 <h1 class="r" style="--i:1" data-edit>{s['title_html']}</h1>
 <p class="sub r" style="--i:2" data-edit>{e(s['sub'])}</p>
-<div class="foot r" style="--i:4"><div><span class="label">{e(s['speaker_label'])}</span><span data-edit>{e(s['speaker'])}</span></div>
+<div class="foot r" style="--i:4"><div>{f'<span class="label">{e(s["speaker_label"])}</span>' if s.get("speaker_label") else ""}<span data-edit>{e(s['speaker'])}</span></div>
 <div style="text-align:right"><span class="label">{e(s['meta_label'])}</span><span data-edit>{e(s['meta'])}</span></div></div>"""
 
 
@@ -534,11 +537,80 @@ def render_roles(s, m, ctx):
 <div class="rl">{cards}</div><p class="more r" style="--i:7" data-edit>{e(s['more'])}</p>"""
 
 
+# --- Role diagrams: small flat SVG schematics in the deck palette (viewBox 680x260) ---
+INK, RED, SOFT, GREY = "#0d0d0d", "#ff3300", "#f3f2ef", "#8c8c8c"
+_K = "x"  # current diagram kind, used to namespace SVG marker ids
+
+
+def _txt(x, y, label, fill=INK, size=20, anchor="middle"):
+    lines = label.split("\n")
+    y0 = y - (len(lines) - 1) * size * 0.6
+    return "".join(f'<text x="{x}" y="{y0 + i*size*1.2:.0f}" text-anchor="{anchor}" dominant-baseline="middle" fill="{fill}" font-family="Archivo" font-weight="800" font-size="{size}">{e(t)}</text>' for i, t in enumerate(lines))
+
+
+def _box(x, y, w, h, label, fill=SOFT, color=INK, size=20, stroke=INK):
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" stroke="{stroke}" stroke-width="3"/>' + _txt(x + w/2, y + h/2, label, color, size)
+
+
+def _arr(x1, y1, x2, y2, color=GREY):
+    return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="4" marker-end="url(#ah-{_K}-{"r" if color == RED else "g"})"/>'
+
+
+def _cyl(x, y, w, h, label):
+    ry = 14
+    return (f'<path d="M{x},{y+ry} v{h-2*ry} a{w/2},{ry} 0 0 0 {w},0 v-{h-2*ry}" fill="{INK}"/>'
+            f'<ellipse cx="{x+w/2}" cy="{y+ry}" rx="{w/2}" ry="{ry}" fill="#3a3a3a"/>' + _txt(x + w/2, y + h/2 + 8, label, "#fff", 19))
+
+
+def _table(x, y, w, h):
+    rows = "".join(f'<line x1="{x}" y1="{y + h*k/4:.0f}" x2="{x+w}" y2="{y + h*k/4:.0f}" stroke="{INK}" stroke-width="2"/>' for k in range(1, 4))
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#fff" stroke="{INK}" stroke-width="3"/><rect x="{x}" y="{y}" width="{w}" height="{h/4:.0f}" fill="{INK}"/>{rows}<line x1="{x+w/2}" y1="{y}" x2="{x+w/2}" y2="{y+h}" stroke="{INK}" stroke-width="2"/>'
+
+
+def role_diagram(dg) -> str:
+    global _K
+    k, L = dg["kind"], dg["l"]
+    _K = k
+    if k == "de":
+        body = "".join(_box(0, 18 + i*80, 120, 58, L[i], size=19) + _arr(122, 47 + i*80, 196, 130) for i in range(3))
+        body += _box(200, 85, 160, 90, L[3], RED, "#fff", 21, RED) + _arr(362, 130, 418, 130)
+        body += _cyl(422, 60, 140, 140, L[4]) + _arr(564, 130, 596, 130) + _box(600, 100, 80, 60, L[5], size=16)
+    elif k == "da":
+        bars = "".join(f'<rect x="{196 + i*34}" y="{200 - hgt}" width="24" height="{hgt}" fill="{RED if i == 2 else INK}"/>' for i, hgt in enumerate((110, 140, 60, 125)))
+        body = _table(0, 60, 130, 120) + _txt(65, 210, L[0], size=18) + _arr(134, 120, 182, 120)
+        body += bars + f'<line x1="186" y1="202" x2="330" y2="202" stroke="{INK}" stroke-width="3"/>' + _txt(258, 230, L[1], size=18) + _arr(336, 120, 384, 120)
+        body += _box(388, 70, 130, 100, L[2], RED, "#fff", 21, RED) + _arr(520, 120, 556, 120) + _box(560, 85, 120, 70, L[3], INK, "#fff", 18)
+    elif k == "ds":
+        dots = "".join(f'<circle cx="{cx}" cy="{cy}" r="6" fill="{RED if cx > 330 else INK}"/>' for cx, cy in ((240, 170), (262, 150), (282, 158), (300, 120), (322, 112), (342, 84), (360, 92), (378, 62)))
+        body = _table(0, 60, 130, 120) + _txt(65, 210, L[0], size=18) + _arr(134, 120, 196, 120)
+        body += f'<rect x="200" y="40" width="210" height="160" fill="{SOFT}" stroke="{INK}" stroke-width="3"/>{dots}<path d="M222,182 C290,170 330,110 396,52" fill="none" stroke="{INK}" stroke-width="3" stroke-dasharray="8 6"/>' + _txt(305, 230, L[1], size=18) + _arr(414, 120, 470, 120)
+        body += (f'<rect x="474" y="70" width="206" height="100" fill="#fff" stroke="{INK}" stroke-width="3"/>'
+                 f'<rect x="474" y="70" width="{206*0.82:.0f}" height="100" fill="{RED}"/>' + _txt(577, 120, L[2], "#fff", 44) + _txt(577, 200, L[3], size=18))
+    elif k == "mle":
+        code = "".join(f'<line x1="18" y1="{78 + i*24}" x2="{18 + w}" y2="{78 + i*24}" stroke="{INK if i % 2 else GREY}" stroke-width="5" stroke-linecap="round"/>' for i, w in enumerate((90, 60, 100, 70)))
+        body = f'<rect x="0" y="40" width="140" height="130" fill="#fff" stroke="{INK}" stroke-width="3"/><rect x="0" y="40" width="140" height="22" fill="{INK}"/>{code}' + _txt(70, 192, L[0], size=18)
+        body += _arr(144, 105, 222, 105) + _box(226, 55, 180, 100, L[1], RED, "#fff", 22, RED) + _arr(410, 105, 500, 105)
+        body += (f'<rect x="504" y="20" width="100" height="170" rx="16" fill="{INK}"/><rect x="514" y="40" width="80" height="120" fill="#fff"/>'
+                 f'<rect x="522" y="52" width="64" height="20" fill="{RED}"/><rect x="522" y="80" width="64" height="12" fill="{SOFT}"/><rect x="522" y="98" width="44" height="12" fill="{SOFT}"/>')
+        body += _txt(554, 210, L[2], size=18)
+        body += f'<path d="M554,226 C554,262 70,262 70,214" fill="none" stroke="{RED}" stroke-width="4" stroke-dasharray="10 7" marker-end="url(#ah-{_K}-r)"/>' + _txt(312, 280, L[3], RED, 18)
+    else:  # ai
+        body = _box(0, 95, 130, 70, L[0], size=19) + _arr(132, 130, 252, 130)
+        body += f'<circle cx="320" cy="130" r="64" fill="{RED}"/>' + _txt(320, 130, L[1], "#fff", 30)
+        body += _box(250, 0, 140, 44, L[2], INK, "#fff", 16) + _arr(320, 46, 320, 62, INK)
+        body += _box(250, 216, 140, 44, L[3], INK, "#fff", 16) + _arr(320, 214, 320, 198, INK)
+        body += _arr(386, 130, 516, 130) + _box(520, 85, 160, 90, L[4], SOFT, INK, 19)
+    defs = (f'<defs><marker id="ah-{k}-g" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{GREY}"/></marker>'
+            f'<marker id="ah-{k}-r" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{RED}"/></marker></defs>')
+    return f'<svg viewBox="0 0 680 296" xmlns="http://www.w3.org/2000/svg">{defs}{body}</svg>'
+
+
 def render_role(s, m, ctx):
     path = "".join(f"<li data-edit>{e(x)}</li>" for x in s["roadmap"])
     work = "".join(f"<li data-edit>{e(x)}</li>" for x in s["work"])
     cases = "".join(f'<div class="case r" style="--i:{i+5}"><div class="t"><small>{e(m["cases"])} {i+1}</small><span data-edit>{e(c["t"])}</span></div><div class="dd" data-edit>{e(c["d"])}</div></div>' for i, c in enumerate(s["cases"]))
-    return f"""<div class="rn r" style="--i:1">{e(s['n'])}</div>
+    dgm = f'<div class="dg r" style="--i:2">{role_diagram(s["diagram"])}</div>' if s.get("diagram") else f'<div class="rn r" style="--i:1">{e(s["n"])}</div>'
+    return f"""{dgm}
 <div class="hd"><div class="label r" style="--i:0">{e(m['role_of'])} {e(s['n'])} / 5</div>
 <h2 class="h-xl r" style="--i:0" data-edit>{e(s['name'])}</h2><p class="tg r" style="--i:1" data-edit>{e(s['tagline'])}</p></div>
 <div class="c1 r" style="--i:2"><div class="label">{e(m['roadmap'])}</div><ol class="path">{path}</ol></div>
