@@ -317,6 +317,47 @@ CSS = r"""
 .fig ~ .pending{padding:28px 36px;flex-direction:row;align-items:center;gap:24px}
 .fig ~ .pending .ar{font-size:48px}.fig ~ .pending .tx{font-size:34px}
 
+
+/* === ILLUSTRATIONS: Q&A pictograms, pipeline/step screenshots, waffle, contacts === */
+.qa .vis{margin-top:auto}
+.qa .vis svg{width:820px;height:250px;max-width:none;max-height:none;display:block}
+.ps .th{display:block;margin-top:22px;width:100%;height:150px;object-fit:cover;object-position:top;border:3px solid var(--ink);max-height:none}
+.ps .th-q{display:flex;align-items:center;justify-content:center;font:800 64px var(--display);color:var(--red);background:var(--soft)}
+.step .stepn{position:absolute;left:150px;top:110px;font:800 200px/1 var(--display);color:var(--red);letter-spacing:-.05em}
+.step .stepimg{position:absolute;left:var(--pad);top:330px;width:500px;height:560px;object-fit:cover;object-position:top;border:3px solid var(--ink);max-height:none;box-shadow:16px 16px 0 var(--red)}
+.lk a{grid-template-columns:150px 1fr auto;column-gap:24px}
+.lk .sth{grid-row:span 2;width:150px;height:94px;object-fit:cover;object-position:top;border:2px solid var(--ink);max-height:none}
+.lk .nm,.lk .u,.lk .dd{grid-column:2}
+.lk .ar{grid-column:3;grid-row:1 / span 2}
+.lk .dd{display:none}
+.waffle{position:absolute;left:var(--pad);top:770px;display:grid;grid-template-columns:repeat(15,44px);gap:8px}
+.waffle i{display:block;width:44px;height:44px;transform:scale(0);transition:transform .4s var(--ease);transition-delay:calc(var(--i) * 25ms + 400ms)}
+.visible .waffle i{transform:none}
+.waffle .wr{background:var(--red)}.waffle .wk{background:var(--ink)}
+.contacts{display:flex;flex-direction:column;gap:12px}
+.contacts .ct{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink);font:600 28px var(--body)}
+.contacts .ct b{width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;font:800 22px var(--display)}
+.contacts .ct:first-child b{background:var(--red)}
+.contacts.compact{flex-direction:row;gap:36px;position:absolute;left:var(--pad);top:412px}
+.contacts.compact .ct{font-size:22px;gap:10px}.contacts.compact .ct b{width:34px;height:34px;font-size:17px}
+.endct{position:absolute;left:var(--pad);top:735px;width:900px}
+.endct .label{margin-bottom:14px}
+.qr{position:absolute;right:var(--pad);top:150px;width:220px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.qr img{width:220px;height:220px;max-width:none;max-height:none;display:block}
+.qr span{font:700 18px var(--display);color:var(--grey);text-align:center}
+
+
+/* closing: leave a column for the QR, contacts as one row above the thank-you line */
+.closing .cols{right:560px;top:290px}
+.closing .qr{top:370px}
+.endct{top:850px;width:auto;right:var(--pad)}
+.endct .contacts.compact{position:static}
+/* Q1-style figure + answer in one column: cap the image height */
+.qa .rcol .fig img{height:300px;width:auto;max-width:100%;object-fit:contain;object-position:left top;align-self:flex-start}
+.qa .rcol .fig figcaption{font-size:21px}
+.qa .rcol .fig+.label+.ans li{padding:16px 0 18px}
+.qa .rcol .fig+.label+.ans li .tx{font-size:28px}
+
 /* === PRESENTATION UI (outside the stage) === */
 .progress{position:fixed;left:0;bottom:0;height:5px;background:var(--red);z-index:1000;transition:width .4s var(--ease)}
 .edit-hotzone{position:fixed;top:0;left:0;width:80px;height:80px;z-index:10000;cursor:pointer}
@@ -366,6 +407,7 @@ def render_speaker(s, m, ctx):
 <div class="circle r" style="--i:3;right:160px;top:150px;width:200px;height:200px"></div>
 <div class="name r" style="--i:1" data-edit>{e(s['name'])}</div>
 <div class="role r" style="--i:2" data-edit>{e(s['role'])}</div>
+<div class="r" style="--i:2">{contact_block(m, compact=True)}</div>
 <div class="facts">{facts}</div>
 <div class="pubs r" style="--i:7"><div class="label">{e(s['pubs_label'])}</div><ul>{pubs}</ul></div>"""
 
@@ -386,7 +428,10 @@ def render_section(s, m, ctx):
 
 
 def render_pipeline(s, m, ctx):
-    steps = "".join(f'<div class="ps r" style="--i:{i+1}"><div class="n">{e(p["n"])}</div><div class="t" data-edit>{e(p["t"])}</div><div class="dd" data-edit>{e(p["d"])}</div></div>' for i, p in enumerate(s["steps"]))
+    th = s.get("thumbs") or [None] * len(s["steps"])
+    def thumb(src):
+        return f'<img class="th" src="{e(src)}" alt="">' if src else '<div class="th th-q">?</div>'
+    steps = "".join(f'<div class="ps r" style="--i:{i+1}"><div class="n">{e(p["n"])}</div><div class="t" data-edit>{e(p["t"])}</div><div class="dd" data-edit>{e(p["d"])}</div>{thumb(th[i]) if s.get("thumbs") else ""}</div>' for i, p in enumerate(s["steps"]))
     tools = " <em>→</em> ".join(e(t) for t in s["tools"].split(" → "))
     return f"""<h2 class="h-xl r" style="--i:0" data-edit>{e(s['title'])}</h2>
 <div class="pipe">{steps}</div><div class="tools r" style="--i:8">{tools}</div>"""
@@ -399,11 +444,23 @@ def render_step(s, m, ctx):
         extra += f'<div class="code r" style="--i:4">{e(s["code"])}</div>'
     if s.get("callout"):
         extra += f'<div class="callout r" style="--i:4" data-edit>{e(s["callout"])}</div>'
-    return f"""<div class="bign r" style="--i:0">{e(s['n'])}</div>
+    left = (f'<div class="stepn r" style="--i:0">{e(s["n"])}</div><img class="stepimg r" style="--i:1" src="{e(s["image"])}" alt="">'
+            if s.get("image") else f'<div class="bign r" style="--i:0">{e(s["n"])}</div>')
+    return f"""{left}
 <div class="col"><h2 class="h-xl r" style="--i:1" data-edit>{e(s['title'])}</h2>
 <p class="lead r" style="--i:2" data-edit>{e(s['lead'])}</p>
 <ul class="pts r" style="--i:3">{pts}</ul>{extra}</div>
 <div class="lesson r" style="--i:6"><b>{e(m['lesson'])}</b><span data-edit>{e(s['lesson'])}</span></div>"""
+
+
+def waffle(s):
+    """One square per respondent, coloured by answer group (first two groups = red: 'only read online' + 'never')."""
+    cells = []
+    for gi, d in enumerate(s["detail"]):
+        cells += [gi] * int(d["k"])
+    order = sorted(range(len(cells)), key=lambda i: (cells[i] not in (0, 2), cells[i]))
+    sq = "".join(f'<i class="w{"r" if cells[i] in (0, 2) else "k"}" style="--i:{n}"></i>' for n, i in enumerate(order))
+    return f'<div class="waffle">{sq}</div>'
 
 
 def render_stat(s, m, ctx):
@@ -411,7 +468,7 @@ def render_stat(s, m, ctx):
     return f"""<div class="label r" style="--i:0;position:absolute;left:160px;top:130px">{e(s['kicker'])}</div>
 <div class="big r" style="--i:0">{e(s['big'])}</div>
 <p class="cap r" style="--i:1" data-edit>{e(s['caption'])}</p>
-<div class="det">{det}</div>
+<div class="det">{det}</div>{waffle(s)}
 <div class="ins r" style="--i:7" data-edit>{e(s['insight'])}</div>"""
 
 
@@ -453,8 +510,13 @@ def render_qa(s, m, ctx):
                  f'<figcaption><span data-edit>{e(fg["caption"])}</span><small data-edit>{e(fg["source"])}</small></figcaption></figure>') + right
     if s.get("see"):
         right += f'<div class="see r" style="--i:6">→ <a href="#{ctx["qpage"][s["see"]]}">{e(m["see_q"])} {e(s["see"])} · {e(m["page"])} {ctx["qpage"][s["see"]]}</a></div>'
+    vis = ""
+    if s.get("visual"):
+        global _K
+        _K = f"q{s['q']}"
+        vis = f'<div class="vis r" style="--i:4">{qa_visual(s["visual"])}</div>'
     return f"""<div class="lcol">{qtag(m, s['q'])}<h2 class="h-q r" style="--i:0" data-edit>{e(s['question'])}</h2>
-<div class="r" style="--i:1"><div class="label" style="margin-bottom:16px">{e(m['students_asked'])}</div>{quotes(s['quotes'])}</div>{stat}</div>
+<div class="r" style="--i:1"><div class="label" style="margin-bottom:16px">{e(m['students_asked'])}</div>{quotes(s['quotes'])}</div>{stat}{vis}</div>
 <div class="rcol">{right}</div>"""
 
 
@@ -481,7 +543,7 @@ def render_ladder(s, m, ctx):
 
 
 def render_links(s, m, ctx):
-    lk = "".join(f'<a href="{e(x["url"])}" target="_blank" rel="noopener" class="r" style="--i:{i+1}"><span class="nm">{e(x["name"])}</span><span class="ar">↗</span><span class="u">{e(x["url"].split("//",1)[1].rstrip("/"))}</span><span class="dd">{e(x["d"])}</span></a>' for i, x in enumerate(s["links"]))
+    lk = "".join(f'<a href="{e(x["url"])}" target="_blank" rel="noopener" class="r" style="--i:{i+1}">{f'<img class="sth" src="{e(x["thumb"])}" alt="">' if x.get("thumb") else ""}<span class="nm">{e(x["name"])}</span><span class="ar">↗</span><span class="u">{e(x["url"].split("//",1)[1].rstrip("/"))}</span><span class="dd">{e(x["d"])}</span></a>' for i, x in enumerate(s["links"]))
     return f"""<div class="lcol">{qtag(m, s['q'])}<h2 class="h-q r" style="--i:0" data-edit>{e(s['question'])}</h2>
 <p class="intro r" style="--i:1" data-edit>{e(s['intro'])}</p></div><div class="lk">{lk}</div>"""
 
@@ -527,7 +589,9 @@ def render_closing(s, m, ctx):
     cols = "".join(f'<div class="ci r" style="--i:{i+1}"><div class="n">{i+1}</div><div class="t" data-edit>{e(x["t"])}</div><div class="dd" data-edit>{e(x["d"])}</div></div>' for i, x in enumerate(s["items"]))
     return f"""<div class="redbar"></div><h2 class="h-xl r" style="--i:0" data-edit>{e(s['title'])}</h2>
 <div class="cols c2">{cols}</div>
-<div class="thanks r" style="--i:6"><span class="tt" data-edit>{e(s['thanks'])}</span><span class="sp" data-edit>{e(s['speaker'])}</span></div>"""
+<div class="thanks r" style="--i:6"><span class="tt" data-edit>{e(s['thanks'])}</span><span class="sp" data-edit>{e(s['speaker'])}</span></div>
+<div class="endct r" style="--i:5">{contact_block(m, compact=True)}</div>
+<div class="qr r" style="--i:5"><img src="assets/qr-linkedin.svg" alt="LinkedIn QR"><span>{e(m['c_scan'])}</span></div>"""
 
 
 def render_roles(s, m, ctx):
@@ -538,7 +602,7 @@ def render_roles(s, m, ctx):
 
 
 # --- Role diagrams: small flat SVG schematics in the deck palette (viewBox 680x260) ---
-INK, RED, SOFT, GREY = "#0d0d0d", "#ff3300", "#f3f2ef", "#8c8c8c"
+INK, RED, SOFT, GREY, RULE = "#0d0d0d", "#ff3300", "#f3f2ef", "#8c8c8c", "#d9d9d6"
 _K = "x"  # current diagram kind, used to namespace SVG marker ids
 
 
@@ -603,6 +667,74 @@ def role_diagram(dg) -> str:
     defs = (f'<defs><marker id="ah-{k}-g" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{GREY}"/></marker>'
             f'<marker id="ah-{k}-r" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{RED}"/></marker></defs>')
     return f'<svg viewBox="0 0 680 296" xmlns="http://www.w3.org/2000/svg">{defs}{body}</svg>'
+
+
+# --- Q&A illustrations: flat SVG pictograms, viewBox 820x250, drawn in the deck palette ---
+def qa_visual(v) -> str:
+    k, L = v["kind"], v["l"]
+    t = _txt
+    if k == "salary":
+        x0, sc = 150, 600 / 40  # axis 0..40
+        ticks = "".join(f'<line x1="{x0 + i*sc}" y1="20" x2="{x0 + i*sc}" y2="200" stroke="{RULE}" stroke-width="2"/>' + t(x0 + i*sc, 218, str(i), GREY, 16) for i in range(0, 41, 10))
+        bars = "".join(f'<rect x="{x0 + a*sc:.0f}" y="{34 + j*58}" width="{(b-a)*sc:.0f}" height="38" fill="{RED if j == 2 else INK}"/>'
+                       + t(x0 - 16, 53 + j*58, L[j], INK, 22, "end") + t(x0 + b*sc + 10, 53 + j*58, f"{a}–{b}", INK, 20, "start") for j, (a, b) in enumerate(v["r"]))
+        body = ticks + bars + t(x0 + 300, 244, L[3], GREY, 17)
+    elif k == "trend":
+        body = (f'<line x1="20" y1="210" x2="800" y2="210" stroke="{INK}" stroke-width="3"/>'
+                f'<polyline points="30,190 150,170 260,176 380,130" fill="none" stroke="{INK}" stroke-width="6"/>'
+                f'<polyline points="380,130 520,96 660,58 780,26" fill="none" stroke="{RED}" stroke-width="6" stroke-dasharray="14 10" marker-end="url(#ah-{_K}-r)"/>'
+                f'<circle cx="380" cy="130" r="12" fill="{INK}"/>' + t(380, 236, L[0], INK, 20) + t(660, 236, L[1], GREY, 20)
+                + f'<rect x="20" y="10" width="330" height="54" fill="{RED}"/>' + t(185, 37, L[2], "#fff", 20))
+    elif k == "buildmaintain":
+        blocks = "".join(f'<rect x="{90 + c*62}" y="{150 - r*50}" width="56" height="44" fill="{INK if (r + c) % 2 else RED}"/>' for r, n in enumerate((4, 3, 2)) for c in range(n))
+        gear = (f'<circle cx="610" cy="110" r="62" fill="none" stroke="{INK}" stroke-width="22" stroke-dasharray="20 14"/>'
+                f'<circle cx="610" cy="110" r="34" fill="{INK}"/><circle cx="610" cy="110" r="14" fill="#fff"/>')
+        body = (f'<rect x="10" y="10" width="360" height="200" fill="{SOFT}"/><rect x="450" y="10" width="360" height="200" fill="{SOFT}"/>'
+                + blocks + gear + t(410, 112, "≠", RED, 64) + t(190, 236, L[0], INK, 22) + t(630, 236, L[1], INK, 22))
+    elif k == "clock":
+        import math
+        cx, cy, r = 130, 125, 105
+        ticks = "".join(f'<line x1="{cx + 88*math.sin(a):.0f}" y1="{cy - 88*math.cos(a):.0f}" x2="{cx + 100*math.sin(a):.0f}" y2="{cy - 100*math.cos(a):.0f}" stroke="{INK}" stroke-width="4"/>' for a in [i*math.pi/6 for i in range(12)])
+        a0, a1 = 0, 8 * math.pi / 6  # 12 → 8 o'clock = 8 hours
+        arc = f'<path d="M{cx},{cy} L{cx},{cy-r} A{r},{r} 0 1 1 {cx + r*math.sin(a1):.1f},{cy - r*math.cos(a1):.1f} Z" fill="{RED}" fill-opacity=".85"/>'
+        body = (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{SOFT}"/>' + arc + ticks + f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{INK}" stroke-width="6"/>'
+                + f'<line x1="{cx}" y1="{cy}" x2="{cx}" y2="{cy-70}" stroke="{INK}" stroke-width="8" stroke-linecap="round"/>'
+                + f'<line x1="{cx}" y1="{cy}" x2="{cx - 48}" y2="{cy + 28}" stroke="{INK}" stroke-width="8" stroke-linecap="round"/>'
+                + t(520, 125, L[0], INK, 46))
+    elif k == "subset":
+        body = (f'<circle cx="300" cy="125" r="118" fill="{SOFT}" stroke="{INK}" stroke-width="4"/><circle cx="352" cy="170" r="44" fill="{RED}"/>'
+                + t(270, 85, L[0], INK, 22) + f'<line x1="396" y1="170" x2="470" y2="170" stroke="{RED}" stroke-width="3"/>' + t(480, 170, L[1], RED, 22, "start"))
+    elif k == "flow":
+        body = (_box(0, 70, 290, 100, L[0], RED, "#fff", 21, RED) + _arr(294, 120, 346, 120) + _box(350, 70, 250, 100, L[1], INK, "#fff", 21)
+                + _arr(604, 120, 656, 120) + f'<rect x="660" y="70" width="150" height="100" fill="none" stroke="{GREY}" stroke-width="3" stroke-dasharray="10 8"/>' + t(735, 120, L[2], GREY, 40))
+    elif k == "langs":
+        chips = "".join(_box(380 + (i % 3) * 145, 30 + (i // 3) * 110, 125, 70, L[i + 1], SOFT, INK, 24) for i in range(6))
+        arrows = "".join(_arr(232, 125, 376 + (i % 3) * 145, 65 + (i // 3) * 110) for i in range(0, 6, 3))
+        body = _box(0, 55, 230, 140, L[0], RED, "#fff", 40, RED) + arrows + chips
+    elif k == "climb":
+        steps = "".join(f'<rect x="{20 + i*190}" y="{210 - (i+1)*42}" width="190" height="{(i+1)*42}" fill="{INK if i < 3 else RED}"/>' + t(115 + i*190, 210 - (i+1)*42 - 18, L[i], RED if L[i] == "?" else INK, 24) for i in range(4))
+        body = steps + f'<line x1="0" y1="210" x2="800" y2="210" stroke="{INK}" stroke-width="4"/>'
+    elif k == "gap":
+        body = (_box(0, 60, 300, 120, L[0], INK, "#fff", 24) + _box(520, 60, 300, 120, L[1], SOFT, INK, 24)
+                + f'<line x1="304" y1="120" x2="508" y2="120" stroke="{RED}" stroke-width="8" marker-end="url(#ah-{_K}-r)"/>' + t(406, 96, L[2], RED, 22))
+    else:  # sources
+        chips = "".join(_box(0, 20 + i*74, 190, 58, L[i], SOFT, INK, 22) + _arr(194, 49 + i*74, 300, 125) for i in range(3))
+        body = chips + _box(304, 75, 230, 100, L[3], RED, "#fff", 23, RED) + _arr(538, 125, 596, 125) + _box(600, 75, 220, 100, L[4], INK, "#fff", 21)
+    return f'<svg viewBox="0 0 820 250" xmlns="http://www.w3.org/2000/svg">{_defs(_K)}{body}</svg>'
+
+
+def _defs(k):
+    return (f'<defs><marker id="ah-{k}-g" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{GREY}"/></marker>'
+            f'<marker id="ah-{k}-r" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="{RED}"/></marker></defs>')
+
+
+def contact_block(m, compact=False) -> str:
+    c = m["contact"]
+    li, fb = c["linkedin"], c["facebook"]
+    show = lambda u: e(u.split("//", 1)[1].rstrip("/"))
+    rows = (f'<a class="ct" href="{e(li)}" target="_blank" rel="noopener"><b>in</b><span>{show(li)}</span></a>'
+            f'<a class="ct" href="{e(fb)}" target="_blank" rel="noopener"><b>f</b><span>{show(fb)}</span></a>')
+    return f'<div class="contacts{" compact" if compact else ""}">{rows}</div>'
 
 
 def render_role(s, m, ctx):

@@ -12,7 +12,13 @@
     "roadmap": "Lộ trình học",
     "work": "Công việc hằng ngày",
     "cases": "Bài toán thực tế",
-    "role_of": "Vị trí"
+    "role_of": "Vị trí",
+    "contact": {
+      "linkedin": "https://www.linkedin.com/in/tqhuyen/",
+      "facebook": "https://www.facebook.com/tranquang.huyen.5"
+    },
+    "c_label": "Liên hệ",
+    "c_scan": "Quét để kết nối LinkedIn"
   },
   "sections": {
     "intro": "Mở đầu",
@@ -159,7 +165,15 @@
           "d": "Thiết kế nội dung hôm nay"
         }
       ],
-      "tools": "Google Forms → CSV → Python → Notion → Slide HTML"
+      "tools": "Google Forms → CSV → Python → Notion → Slide HTML",
+      "thumbs": [
+        null,
+        "assets/shot-form.jpg",
+        "assets/shot-csv.jpg",
+        "assets/shot-notion.jpg",
+        "assets/shot-chart.jpg",
+        "assets/shot-deck.jpg"
+      ]
     },
     {
       "type": "step",
@@ -186,7 +200,8 @@
         "9 câu, 3–5 phút → nhiều người làm hết"
       ],
       "callout": "Thực tế: bản đầu có 2 câu trùng nhau và 1 câu bị mất hết lựa chọn — phải sửa form khi đang chạy.",
-      "lesson": "Luôn chạy thử với vài người trước khi gửi cho tất cả."
+      "lesson": "Luôn chạy thử với vài người trước khi gửi cho tất cả.",
+      "image": "assets/shot-form.jpg"
     },
     {
       "type": "step",
@@ -200,7 +215,8 @@
         "40+ ý tự luận → gộp thành 18 câu hỏi, chia 4 nhóm"
       ],
       "code": "for option in OPTIONS:\n    if option in answer:\n        counts[option] += 1",
-      "lesson": "Phần lớn thời gian của một dự án dữ liệu nằm ở bước này."
+      "lesson": "Phần lớn thời gian của một dự án dữ liệu nằm ở bước này.",
+      "image": "assets/shot-csv.jpg"
     },
     {
       "type": "stat",
@@ -698,7 +714,10 @@
         "Nếu giả sử “bong bóng AI” nổ ra thì sẽ có thay đổi gì và những gì sẽ được yêu cầu đối với bọn em?"
       ],
       "stat": "18/29 bạn lo về cơ hội việc làm",
-      "answer": [],
+      "answer": [
+        "Xét cho cùng, AI là kết tinh của lao động quá khứ — nó không thay thế được giá trị lao động hiện tại.",
+        "Vẫn cần con người tạo ra dữ liệu mới và kiểm soát AI."
+      ],
       "figure": {
         "src": "assets/mad-paper-excerpt.jpg",
         "alt": "Bài báo Self-Consuming Generative Models Go MAD",
@@ -714,7 +733,18 @@
       "quotes": [
         "Liệu rằng 5 năm, 10 năm sau công việc liên quan đến Data Science có còn hot ở Việt Nam nói chung và Đà Nẵng nói riêng không?"
       ],
-      "answer": []
+      "answer": [
+        "Không thể nói trước được.",
+        "Nhưng xu hướng chung: các ngành nghề công nghệ và công nghệ cao sẽ không bao giờ lỗi thời."
+      ],
+      "visual": {
+        "kind": "trend",
+        "l": [
+          "Hôm nay",
+          "5–10 năm tới",
+          "Công nghệ không lỗi thời"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -725,7 +755,34 @@
         "Mức lương trung bình cho các vị trí từ thấp tới cao.",
         "Việc AI ngày càng phổ biến và thay thế một số vị trí của ngành thì từ bây giờ chúng ta nên làm gì?"
       ],
-      "answer": []
+      "answer": [
+        "Tuỳ công ty. Theo anh biết, mức lương khoảng:",
+        "Junior 4–15 · Mid 15–25 · Senior 25–35 (triệu đồng / tháng)"
+      ],
+      "see": "1",
+      "visual": {
+        "kind": "salary",
+        "l": [
+          "Junior",
+          "Mid",
+          "Senior",
+          "triệu đồng / tháng · tuỳ công ty"
+        ],
+        "r": [
+          [
+            4,
+            15
+          ],
+          [
+            15,
+            25
+          ],
+          [
+            25,
+            35
+          ]
+        ]
+      }
     },
     {
       "type": "qa",
@@ -760,7 +817,16 @@
         "Em muốn hiểu rõ công việc của em thực sự sẽ trông như thế nào."
       ],
       "stat": "18/29 bạn chưa hình dung được công việc thực tế",
-      "answer": []
+      "answer": [
+        "Xây dựng dự án từ đầu và vận hành, maintain dự án cũ sẽ có phần khác nhau."
+      ],
+      "visual": {
+        "kind": "buildmaintain",
+        "l": [
+          "Xây dựng từ đầu",
+          "Vận hành · maintain"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -773,7 +839,13 @@
       "answer": [
         "8 tiếng một ngày, như bình thường.",
         "Xong sớm có được về sớm không thì tuỳ công ty — nhưng xong sớm thì ngồi chơi thì có."
-      ]
+      ],
+      "visual": {
+        "kind": "clock",
+        "l": [
+          "8 tiếng / ngày"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -788,7 +860,14 @@
         "Kiến thức dùng ở doanh nghiệp ít hơn nhiều so với ở trường.",
         "Các bạn nên học vững kiến thức ở trường."
       ],
-      "see": "14"
+      "see": "14",
+      "visual": {
+        "kind": "subset",
+        "l": [
+          "Kiến thức ở trường",
+          "Dùng ở doanh nghiệp"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -799,7 +878,19 @@
         "Kinh nghiệm làm dự án thực tế: quy trình xây dựng một dự án Data/AI từ đầu đến cuối."
       ],
       "stat": "17/29 bạn chưa biết cách làm dự án cá nhân",
-      "answer": []
+      "answer": [
+        "Phân tích yêu cầu khách hàng",
+        "Khai thác dữ liệu",
+        "… các bước tiếp theo: xem case study ở phần 01"
+      ],
+      "visual": {
+        "kind": "flow",
+        "l": [
+          "Phân tích yêu cầu\nkhách hàng",
+          "Khai thác dữ liệu",
+          "…"
+        ]
+      }
     },
     {
       "type": "section",
@@ -860,7 +951,19 @@
         "Không cần — Python là đủ.",
         "Nắm vững một ngôn ngữ rồi thì học ngôn ngữ khác rất dễ.",
         "Anh học Python, sau đó bị “bắt” chuyển sang PHP, JS, C#, Dart, Kotlin, Swift… và đều học được."
-      ]
+      ],
+      "visual": {
+        "kind": "langs",
+        "l": [
+          "Python",
+          "PHP",
+          "JS",
+          "C#",
+          "Dart",
+          "Kotlin",
+          "Swift"
+        ]
+      }
     },
     {
       "type": "statement",
@@ -883,7 +986,16 @@
         "Đi từ cơ bản lên.",
         "Đừng bỏ qua chỗ mình thấy không hợp lý.",
         "Thấy mình chưa hiểu hết thì luôn đặt câu hỏi."
-      ]
+      ],
+      "visual": {
+        "kind": "climb",
+        "l": [
+          "Cơ bản",
+          "?",
+          "?",
+          "Nâng cao"
+        ]
+      }
     },
     {
       "type": "links",
@@ -895,27 +1007,32 @@
         {
           "name": "Machine Learning cơ bản",
           "url": "https://machinelearningcoban.com/",
-          "d": "Sách ML bằng tiếng Việt"
+          "d": "Sách ML bằng tiếng Việt",
+          "thumb": "assets/site-mlcb.jpg"
         },
         {
           "name": "Deep-ML",
           "url": "https://www.deep-ml.com/",
-          "d": "Bài tập ML từ con số 0"
+          "d": "Bài tập ML từ con số 0",
+          "thumb": "assets/site-deepml.jpg"
         },
         {
           "name": "LeetML",
           "url": "https://leetml.org/",
-          "d": "“LeetCode” cho MLE / phỏng vấn AI"
+          "d": "“LeetCode” cho MLE / phỏng vấn AI",
+          "thumb": "assets/site-leetml.jpg"
         },
         {
           "name": "TensorTonic",
           "url": "https://www.tensortonic.com/",
-          "d": "Học ML qua code"
+          "d": "Học ML qua code",
+          "thumb": "assets/site-tensortonic.jpg"
         },
         {
           "name": "TorchLeet",
           "url": "https://github.com/Exorust/TorchLeet",
-          "d": "Bài tập PyTorch"
+          "d": "Bài tập PyTorch",
+          "thumb": "assets/site-torchleet.jpg"
         }
       ]
     },
@@ -939,7 +1056,15 @@
         "Bài toán thực tế chỉ giải được bằng kiến thức đại học hoặc học thuật bậc cao — không chỉ bằng kinh nghiệm nội bộ.",
         "Nhiều kỹ sư xem thường kiến thức đại học nên bế tắc. Ngành dữ liệu & AI thấy rõ nhất.",
         "Trước mắt: học vững lý thuyết trên lớp. Gặp bài toán thực tế rồi sẽ hiểu."
-      ]
+      ],
+      "visual": {
+        "kind": "gap",
+        "l": [
+          "Kiến thức đại học",
+          "Bài toán doanh nghiệp",
+          "giải được"
+        ]
+      }
     },
     {
       "type": "ladder",
@@ -982,7 +1107,17 @@
         "Đọc từ các kênh và blog: LinkedIn, Substack, Reddit.",
         "Nhưng muốn đọc hiểu thì phải có nền tảng vững trước.",
         "Nhiều thuật ngữ bị thương mại hoá mà không mang lại giá trị — cần nền tảng để phản biện và tự phản biện."
-      ]
+      ],
+      "visual": {
+        "kind": "sources",
+        "l": [
+          "LinkedIn",
+          "Substack",
+          "Reddit",
+          "Nền tảng vững",
+          "Hiểu & phản biện"
+        ]
+      }
     },
     {
       "type": "tips",

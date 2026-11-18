@@ -12,7 +12,13 @@
     "roadmap": "Learning path",
     "work": "Day-to-day work",
     "cases": "Use case",
-    "role_of": "Role"
+    "role_of": "Role",
+    "contact": {
+      "linkedin": "https://www.linkedin.com/in/tqhuyen/",
+      "facebook": "https://www.facebook.com/tranquang.huyen.5"
+    },
+    "c_label": "Contact",
+    "c_scan": "Scan to connect on LinkedIn"
   },
   "sections": {
     "intro": "Intro",
@@ -159,7 +165,15 @@
           "d": "Design today's content"
         }
       ],
-      "tools": "Google Forms → CSV → Python → Notion → HTML slides"
+      "tools": "Google Forms → CSV → Python → Notion → HTML slides",
+      "thumbs": [
+        null,
+        "assets/shot-form.jpg",
+        "assets/shot-csv.jpg",
+        "assets/shot-notion.jpg",
+        "assets/shot-chart.jpg",
+        "assets/shot-deck.jpg"
+      ]
     },
     {
       "type": "step",
@@ -186,7 +200,8 @@
         "9 questions, 3–5 minutes → most people finish"
       ],
       "callout": "Reality: the first version had 2 duplicate questions and 1 question that lost all its options — we fixed the form while it was live.",
-      "lesson": "Always test with a few people before sending it to everyone."
+      "lesson": "Always test with a few people before sending it to everyone.",
+      "image": "assets/shot-form.jpg"
     },
     {
       "type": "step",
@@ -200,7 +215,8 @@
         "40+ open-text ideas → merged into 18 questions in 4 groups"
       ],
       "code": "for option in OPTIONS:\n    if option in answer:\n        counts[option] += 1",
-      "lesson": "Most of a data project's time is spent right here."
+      "lesson": "Most of a data project's time is spent right here.",
+      "image": "assets/shot-csv.jpg"
     },
     {
       "type": "stat",
@@ -698,7 +714,10 @@
         "If the “AI bubble” bursts, what changes, and what will be expected of us?"
       ],
       "stat": "18/29 are worried about job prospects",
-      "answer": [],
+      "answer": [
+        "Ultimately, AI is the crystallization of past labor — it can't replace the value of present labor.",
+        "We still need people to create new data and to keep AI in check."
+      ],
       "figure": {
         "src": "assets/mad-paper-excerpt.jpg",
         "alt": "Paper: Self-Consuming Generative Models Go MAD",
@@ -714,7 +733,18 @@
       "quotes": [
         "In 5 or 10 years, will Data Science jobs still be hot in Vietnam in general and in Da Nang in particular?"
       ],
-      "answer": []
+      "answer": [
+        "Nobody can say for sure.",
+        "But the general trend: technology and high-tech jobs never go out of date."
+      ],
+      "visual": {
+        "kind": "trend",
+        "l": [
+          "Today",
+          "Next 5–10 years",
+          "Tech never goes out of date"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -725,7 +755,34 @@
         "Average salary for each role, from junior to senior.",
         "As AI becomes common and replaces some roles in the field, what should we do starting now?"
       ],
-      "answer": []
+      "answer": [
+        "It depends on the company. As far as I know, roughly:",
+        "Junior 4–15 · Mid 15–25 · Senior 25–35 (million VND / month)"
+      ],
+      "see": "1",
+      "visual": {
+        "kind": "salary",
+        "l": [
+          "Junior",
+          "Mid",
+          "Senior",
+          "million VND / month · varies by company"
+        ],
+        "r": [
+          [
+            4,
+            15
+          ],
+          [
+            15,
+            25
+          ],
+          [
+            25,
+            35
+          ]
+        ]
+      }
     },
     {
       "type": "qa",
@@ -760,7 +817,16 @@
         "I want to understand what my job will actually look like."
       ],
       "stat": "18/29 can't picture the real job yet",
-      "answer": []
+      "answer": [
+        "Building a project from scratch is different from operating and maintaining an existing one."
+      ],
+      "visual": {
+        "kind": "buildmaintain",
+        "l": [
+          "Build from scratch",
+          "Operate · maintain"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -773,7 +839,13 @@
       "answer": [
         "8 hours a day, like any normal job.",
         "Whether you can leave early depends on the company — but finishing early does usually mean some free time."
-      ]
+      ],
+      "visual": {
+        "kind": "clock",
+        "l": [
+          "8 hours / day"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -788,7 +860,14 @@
         "Companies use far less knowledge than you learn at school.",
         "So learn what's taught at school solidly."
       ],
-      "see": "14"
+      "see": "14",
+      "visual": {
+        "kind": "subset",
+        "l": [
+          "What school teaches",
+          "What companies use"
+        ]
+      }
     },
     {
       "type": "qa",
@@ -799,7 +878,19 @@
         "Real project experience: the process of building a Data/AI project end to end."
       ],
       "stat": "17/29 don't know how to build a personal project",
-      "answer": []
+      "answer": [
+        "Analyze the client's requirements",
+        "Mine the data",
+        "… next steps: see the case study in part 01"
+      ],
+      "visual": {
+        "kind": "flow",
+        "l": [
+          "Analyze client\nrequirements",
+          "Mine the data",
+          "…"
+        ]
+      }
     },
     {
       "type": "section",
@@ -860,7 +951,19 @@
         "No — Python is enough.",
         "Once you master one language, picking up others is easy.",
         "I learned Python, then got “pushed” into PHP, JS, C#, Dart, Kotlin, Swift… and handled them all."
-      ]
+      ],
+      "visual": {
+        "kind": "langs",
+        "l": [
+          "Python",
+          "PHP",
+          "JS",
+          "C#",
+          "Dart",
+          "Kotlin",
+          "Swift"
+        ]
+      }
     },
     {
       "type": "statement",
@@ -883,7 +986,16 @@
         "Build up from the basics.",
         "Don't skip the parts that don't make sense to you.",
         "Whenever you feel you don't fully get it, ask questions."
-      ]
+      ],
+      "visual": {
+        "kind": "climb",
+        "l": [
+          "Basics",
+          "?",
+          "?",
+          "Advanced"
+        ]
+      }
     },
     {
       "type": "links",
@@ -895,27 +1007,32 @@
         {
           "name": "Machine Learning cơ bản",
           "url": "https://machinelearningcoban.com/",
-          "d": "ML book in Vietnamese"
+          "d": "ML book in Vietnamese",
+          "thumb": "assets/site-mlcb.jpg"
         },
         {
           "name": "Deep-ML",
           "url": "https://www.deep-ml.com/",
-          "d": "ML exercises from scratch"
+          "d": "ML exercises from scratch",
+          "thumb": "assets/site-deepml.jpg"
         },
         {
           "name": "LeetML",
           "url": "https://leetml.org/",
-          "d": "“LeetCode” for MLE / AI interviews"
+          "d": "“LeetCode” for MLE / AI interviews",
+          "thumb": "assets/site-leetml.jpg"
         },
         {
           "name": "TensorTonic",
           "url": "https://www.tensortonic.com/",
-          "d": "Learn ML through code"
+          "d": "Learn ML through code",
+          "thumb": "assets/site-tensortonic.jpg"
         },
         {
           "name": "TorchLeet",
           "url": "https://github.com/Exorust/TorchLeet",
-          "d": "PyTorch exercises"
+          "d": "PyTorch exercises",
+          "thumb": "assets/site-torchleet.jpg"
         }
       ]
     },
@@ -939,7 +1056,15 @@
         "Real business problems can only be solved with university-level or advanced academic knowledge — not internal experience alone.",
         "Many engineers look down on university knowledge and get stuck. It's most obvious in data & AI.",
         "For now: master the theory in class. You'll understand once you hit real problems."
-      ]
+      ],
+      "visual": {
+        "kind": "gap",
+        "l": [
+          "University knowledge",
+          "Business problems",
+          "solves"
+        ]
+      }
     },
     {
       "type": "ladder",
@@ -982,7 +1107,17 @@
         "Follow channels and blogs: LinkedIn, Substack, Reddit.",
         "But to understand what you read, you need solid foundations first.",
         "Many buzzwords are hype with little real value — foundations let you question them, and yourself."
-      ]
+      ],
+      "visual": {
+        "kind": "sources",
+        "l": [
+          "LinkedIn",
+          "Substack",
+          "Reddit",
+          "Solid foundations",
+          "Understand & question"
+        ]
+      }
     },
     {
       "type": "tips",
