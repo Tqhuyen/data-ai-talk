@@ -1,0 +1,1203 @@
+{
+  "lang": "vi",
+  "meta": {
+    "title": "Data & AI — Bắt đầu từ đâu?",
+    "pending": "Trả lời trực tiếp tại buổi chia sẻ",
+    "answer": "Trả lời",
+    "students_asked": "Các bạn hỏi",
+    "lesson": "Bài học",
+    "see_q": "Câu",
+    "of": "/",
+    "page": "tr.",
+    "roadmap": "Lộ trình học",
+    "work": "Công việc hằng ngày",
+    "cases": "Bài toán thực tế",
+    "role_of": "Vị trí"
+  },
+  "sections": {
+    "intro": "Mở đầu",
+    "case": "01 — Case study",
+    "industry": "02 — Tổng quan ngành",
+    "work": "03 — Công việc thực tế",
+    "skills": "04 — Kiến thức cần có",
+    "career": "05 — Profile & sự nghiệp",
+    "qa": "06 — Q&A",
+    "end": "Kết"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "sec": "intro",
+      "kicker": "Chia sẻ cùng sinh viên năm nhất · Khoa học dữ liệu & Trí tuệ nhân tạo",
+      "title_html": "Data &amp; AI —<br>bắt đầu <em>từ đâu?</em>",
+      "sub": "Ngành này làm gì, cần học gì, và đi làm thật sự trông như thế nào — trả lời từ chính câu hỏi của các bạn.",
+      "speaker_label": "Diễn giả",
+      "speaker": "Trần Quang Huyên",
+      "meta_label": "Khảo sát",
+      "meta": "29 câu trả lời · 18 câu hỏi"
+    },
+    {
+      "type": "speaker",
+      "sec": "intro",
+      "kicker": "Người chia sẻ",
+      "name": "Trần Quang Huyên",
+      "role": "AI Engineer tại Everfit",
+      "facts": [
+        {
+          "l": "Hiện tại",
+          "k": "Everfit",
+          "v": "AI Engineer"
+        },
+        {
+          "l": "Trước đó",
+          "k": "Hekate",
+          "v": "AI Engineer"
+        },
+        {
+          "l": "Thạc sĩ",
+          "k": "Kỹ thuật Điện tử",
+          "v": "Chuyên ngành Trí tuệ nhân tạo · Trường ĐH Bách khoa – ĐH Đà Nẵng"
+        },
+        {
+          "l": "Nghiên cứu",
+          "k": [
+            "AI trong ảnh y tế",
+            "Quantum Machine Learning"
+          ],
+          "v": ""
+        }
+      ],
+      "pubs_label": "Công bố gần đây · 2025",
+      "pubs": [
+        {
+          "t": "Efficient Circuit Classifier Design for Enhancing Quantum Self-Attention in Vision Transformers",
+          "v": "IEEE Globecom Workshops"
+        },
+        {
+          "t": "Comparative Analysis of Deep Learning Architectures for Brain Tumor Segmentation",
+          "v": "Int. Conf. on Advanced Technologies for Communications (ATC)"
+        }
+      ]
+    },
+    {
+      "type": "agenda",
+      "sec": "intro",
+      "title": "Hôm nay mình đi qua",
+      "items": [
+        {
+          "n": "01",
+          "t": "Case study",
+          "d": "Từ khảo sát của các bạn đến một dự án dữ liệu end-to-end"
+        },
+        {
+          "n": "02",
+          "t": "Tổng quan ngành",
+          "d": "Các vị trí nghề nghiệp, thị trường, xu hướng"
+        },
+        {
+          "n": "03",
+          "t": "Công việc thực tế",
+          "d": "Một ngày đi làm, dự án chạy thế nào"
+        },
+        {
+          "n": "04",
+          "t": "Kiến thức cần có",
+          "d": "Học gì, theo thứ tự nào, học ở đâu"
+        },
+        {
+          "n": "05",
+          "t": "Profile & sự nghiệp",
+          "d": "Nhà tuyển dụng cần gì, thăng tiến, sai lầm"
+        },
+        {
+          "n": "06",
+          "t": "Q&A",
+          "d": "Toàn bộ 18 câu hỏi của các bạn"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "case",
+      "n": "01",
+      "title": "Case study:<br>khảo sát của các bạn",
+      "sub": "Buổi chia sẻ này chính là một dự án dữ liệu nhỏ. Cùng xem nó được làm từ đầu đến cuối như thế nào."
+    },
+    {
+      "type": "pipeline",
+      "sec": "case",
+      "title": "Một dự án dữ liệu end-to-end",
+      "steps": [
+        {
+          "n": "1",
+          "t": "Đặt câu hỏi",
+          "d": "Buổi chia sẻ nên nói gì?"
+        },
+        {
+          "n": "2",
+          "t": "Thu thập",
+          "d": "Google Form · 9 câu · 29 phản hồi"
+        },
+        {
+          "n": "3",
+          "t": "Làm sạch",
+          "d": "Xuất CSV · tách đáp án · gộp ý trùng"
+        },
+        {
+          "n": "4",
+          "t": "Phân tích",
+          "d": "Đếm · tỉ lệ · xếp hạng"
+        },
+        {
+          "n": "5",
+          "t": "Trực quan hoá",
+          "d": "Biểu đồ · bảng"
+        },
+        {
+          "n": "6",
+          "t": "Hành động",
+          "d": "Thiết kế nội dung hôm nay"
+        }
+      ],
+      "tools": "Google Forms → CSV → Python → Notion → Slide HTML"
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "1",
+      "title": "Đặt câu hỏi",
+      "lead": "Bắt đầu từ vấn đề cần giải quyết — không phải từ dữ liệu.",
+      "points": [
+        "Vấn đề: 1 buổi chia sẻ, thời gian có hạn, rất nhiều chủ đề có thể nói",
+        "Câu hỏi: các bạn thực sự cần nghe gì nhất?",
+        "Thành công khi: câu hỏi thật của các bạn được trả lời"
+      ],
+      "lesson": "Câu hỏi rõ ràng quyết định bạn cần thu thập dữ liệu gì."
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "2",
+      "title": "Thu thập dữ liệu",
+      "lead": "Thiết kế form cũng là thiết kế dữ liệu.",
+      "points": [
+        "Ẩn danh, không bắt buộc tên → các bạn trả lời thật hơn",
+        "Trắc nghiệm để đếm được · tự luận để lấy câu hỏi thật",
+        "9 câu, 3–5 phút → nhiều người làm hết"
+      ],
+      "callout": "Thực tế: bản đầu có 2 câu trùng nhau và 1 câu bị mất hết lựa chọn — phải sửa form khi đang chạy.",
+      "lesson": "Luôn chạy thử với vài người trước khi gửi cho tất cả."
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "3",
+      "title": "Làm sạch dữ liệu",
+      "lead": "Dữ liệu thật hiếm khi dùng được ngay.",
+      "points": [
+        "Google Forms nối nhiều đáp án bằng dấu phẩy — nhưng chính đáp án cũng chứa dấu phẩy (“Python, SQL, Power BI…”)",
+        "→ Không tách bằng dấu phẩy được; phải so khớp với danh sách lựa chọn gốc",
+        "40+ ý tự luận → gộp thành 18 câu hỏi, chia 4 nhóm"
+      ],
+      "code": "for option in OPTIONS:\n    if option in answer:\n        counts[option] += 1",
+      "lesson": "Phần lớn thời gian của một dự án dữ liệu nằm ở bước này."
+    },
+    {
+      "type": "stat",
+      "sec": "case",
+      "kicker": "Bước 4 · Phân tích — Các bạn là ai?",
+      "big": "76%",
+      "caption": "mới chỉ tìm hiểu qua mạng hoặc chưa từng tìm hiểu về Data & AI",
+      "detail": [
+        {
+          "k": "17",
+          "v": "tìm hiểu qua Internet, sách báo, mạng xã hội"
+        },
+        {
+          "k": "6",
+          "v": "đã học một số kiến thức cơ bản"
+        },
+        {
+          "k": "5",
+          "v": "chưa từng tìm hiểu"
+        },
+        {
+          "k": "1",
+          "v": "đã làm một dự án nhỏ"
+        }
+      ],
+      "insight": "→ Hôm nay nói ở mức tổng quan, ít thuật toán."
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Bước 5 · Trực quan hoá",
+      "title": "Các bạn muốn nghe về…",
+      "total": 29,
+      "items": [
+        {
+          "label": "Thực tập & việc làm",
+          "count": 26
+        },
+        {
+          "label": "Tổng quan ngành Data & AI",
+          "count": 25
+        },
+        {
+          "label": "Trí tuệ nhân tạo (AI)",
+          "count": 24
+        },
+        {
+          "label": "Định hướng nghề nghiệp",
+          "count": 22
+        },
+        {
+          "label": "Phát triển sự nghiệp",
+          "count": 21
+        },
+        {
+          "label": "Phân tích dữ liệu",
+          "count": 21
+        },
+        {
+          "label": "Học tập & nghiên cứu",
+          "count": 20
+        },
+        {
+          "label": "Kiến thức nền tảng",
+          "count": 20
+        },
+        {
+          "label": "Dự án thực tế",
+          "count": 19
+        },
+        {
+          "label": "Ứng dụng AI",
+          "count": 18
+        },
+        {
+          "label": "Công cụ & công nghệ",
+          "count": 17
+        },
+        {
+          "label": "Kỹ năng cần thiết",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Bước 5 · Trực quan hoá",
+      "title": "Điều các bạn đang lo nhất",
+      "total": 29,
+      "items": [
+        {
+          "label": "Chưa hình dung công việc thực tế",
+          "count": 18
+        },
+        {
+          "label": "Lo về cơ hội việc làm",
+          "count": 18
+        },
+        {
+          "label": "Chưa biết làm dự án cá nhân",
+          "count": 17
+        },
+        {
+          "label": "Không biết bắt đầu học lập trình từ đâu",
+          "count": 15
+        },
+        {
+          "label": "Chưa hiểu rõ ngành học",
+          "count": 12
+        },
+        {
+          "label": "Chưa biết cách tự học, tìm tài liệu",
+          "count": 11
+        },
+        {
+          "label": "Không biết học công cụ / ngôn ngữ nào",
+          "count": 10
+        },
+        {
+          "label": "Toán và xác suất thống kê khó",
+          "count": 9
+        },
+        {
+          "label": "Chưa biết dùng AI để học hiệu quả",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Bước 5 · Trực quan hoá",
+      "title": "Sau hôm nay, các bạn muốn…",
+      "total": 29,
+      "unit": "count",
+      "items": [
+        {
+          "label": "Có lộ trình học 4 năm đại học",
+          "count": 7
+        },
+        {
+          "label": "Hiểu rõ hơn về ngành",
+          "count": 6
+        },
+        {
+          "label": "Biết nên học gì, bắt đầu từ đâu",
+          "count": 6
+        },
+        {
+          "label": "Định hướng nghề nghiệp rõ hơn",
+          "count": 3
+        },
+        {
+          "label": "Hiểu môi trường doanh nghiệp",
+          "count": 3
+        },
+        {
+          "label": "Thêm động lực học tập",
+          "count": 2
+        },
+        {
+          "label": "Kết nối với người có kinh nghiệm",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "sec": "case",
+      "kicker": "Bước 6 · Hành động",
+      "title": "Từ insight đến nội dung hôm nay",
+      "rows": [
+        {
+          "insight": "90% muốn biết về thực tập & việc làm",
+          "action": "05 — Profile & sự nghiệp"
+        },
+        {
+          "insight": "62% chưa hình dung công việc thực tế",
+          "action": "03 — Công việc thực tế"
+        },
+        {
+          "insight": "Mong muốn #1: lộ trình học 4 năm",
+          "action": "04 — Kiến thức cần có"
+        },
+        {
+          "insight": "76% mới bắt đầu tìm hiểu",
+          "action": "Nói tổng quan, ít thuật toán"
+        }
+      ]
+    },
+    {
+      "type": "lessons",
+      "sec": "case",
+      "title": "3 bài học từ một dự án rất nhỏ",
+      "items": [
+        {
+          "t": "Câu hỏi trước, dữ liệu sau",
+          "d": "Biết mình cần quyết định gì rồi mới thiết kế cách thu thập."
+        },
+        {
+          "t": "Dữ liệu thật luôn “bẩn”",
+          "d": "Form lỗi, đáp án lẫn dấu phẩy, câu trả lời viết tắt — chuyện bình thường."
+        },
+        {
+          "t": "Phân tích phải dẫn tới hành động",
+          "d": "Biểu đồ đẹp chưa đủ; kết quả phải thay đổi được một quyết định."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "industry",
+      "n": "02",
+      "title": "Tổng quan ngành",
+      "sub": "Các vị trí nghề nghiệp, thị trường và AI trong thực tế.",
+      "qs": [
+        "1",
+        "2",
+        "3",
+        "8"
+      ]
+    },
+    {
+      "type": "venn",
+      "sec": "industry",
+      "kicker": "Trước khi nói về nghề",
+      "title": "AI, ML, DL và Data Science liên quan thế nào?",
+      "labels": {
+        "ai": [
+          "Trí tuệ",
+          "nhân tạo"
+        ],
+        "ml": [
+          "Machine",
+          "Learning"
+        ],
+        "dl": [
+          "Deep",
+          "Learning"
+        ],
+        "ds": [
+          "Data",
+          "Science"
+        ]
+      },
+      "defs": [
+        {
+          "t": "Trí tuệ nhân tạo (AI)",
+          "d": "Máy làm được những việc vốn cần trí tuệ con người."
+        },
+        {
+          "t": "Machine Learning",
+          "d": "Một nhánh của AI: máy tự học quy luật từ dữ liệu, thay vì được viết sẵn từng luật."
+        },
+        {
+          "t": "Deep Learning",
+          "d": "Một nhánh của ML: mạng nơ-ron nhiều lớp — ảnh, giọng nói, ngôn ngữ (LLM)."
+        },
+        {
+          "t": "Data Science",
+          "d": "Rút ra hiểu biết từ dữ liệu bằng thống kê, phân tích — và dùng ML/DL khi cần."
+        }
+      ],
+      "note": "Phần giao nhau: Data Science dùng ML làm công cụ — nhưng không phải việc Data Science nào cũng là AI."
+    },
+    {
+      "type": "roles",
+      "sec": "industry",
+      "kicker": "Học Data Science & AI ra làm gì?",
+      "title": "5 vị trí chính — một dòng chảy dữ liệu",
+      "items": [
+        {
+          "name": "Data Engineer",
+          "q": "Dữ liệu đã sẵn sàng chưa?",
+          "tools": "SQL · Spark · Airflow"
+        },
+        {
+          "name": "Data Analyst",
+          "q": "Chuyện gì đã xảy ra, vì sao?",
+          "tools": "SQL · Excel · Power BI"
+        },
+        {
+          "name": "Data Scientist",
+          "q": "Chuyện gì sắp xảy ra?",
+          "tools": "Python · Thống kê · ML"
+        },
+        {
+          "name": "ML Engineer",
+          "q": "Mô hình chạy thật ra sao?",
+          "tools": "PyTorch · API · MLOps"
+        },
+        {
+          "name": "AI Engineer",
+          "q": "Xây sản phẩm AI thế nào?",
+          "tools": "LLM · RAG · Agent"
+        }
+      ],
+      "more": "Ngoài ra: BI Analyst · MLOps Engineer · Research Scientist · Data Product Manager…"
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "1",
+      "name": "Data Engineer",
+      "tagline": "Xây “đường ống” để dữ liệu chảy về đúng, đủ, đúng giờ.",
+      "roadmap": [
+        "SQL & Python vững",
+        "Cơ sở dữ liệu, mô hình hoá kho dữ liệu",
+        "ETL/ELT & điều phối: Airflow, dbt",
+        "Big data & cloud: Spark, Kafka, AWS/GCP"
+      ],
+      "work": [
+        "Thu thập dữ liệu từ nhiều nguồn: app, web, hệ thống bán hàng",
+        "Làm sạch, chuẩn hoá, đưa vào kho dữ liệu",
+        "Giám sát pipeline: dữ liệu trễ, thiếu, sai thì sửa"
+      ],
+      "cases": [
+        {
+          "t": "Kho dữ liệu bán lẻ",
+          "d": "Dữ liệu bán hàng nằm rời ở cửa hàng, web, app → gom về một kho, cập nhật mỗi đêm → cả công ty dùng chung một con số doanh thu."
+        },
+        {
+          "t": "Dữ liệu thời gian thực",
+          "d": "App gọi xe cần vị trí tài xế từng giây → luồng streaming (Kafka) đưa dữ liệu tới hệ thống ghép chuyến."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "2",
+      "name": "Data Analyst",
+      "tagline": "Biến dữ liệu thành câu trả lời cho câu hỏi kinh doanh.",
+      "roadmap": [
+        "SQL · Excel / Google Sheets",
+        "Thống kê mô tả & kiểm định",
+        "BI: Power BI, Tableau",
+        "Kể chuyện bằng dữ liệu, hiểu nghiệp vụ"
+      ],
+      "work": [
+        "Nhận câu hỏi từ team kinh doanh, marketing",
+        "Truy vấn, phân tích, tìm nguyên nhân",
+        "Làm dashboard, báo cáo, đề xuất hành động"
+      ],
+      "cases": [
+        {
+          "t": "Doanh thu tháng giảm 15%",
+          "d": "Tách theo khu vực, kênh, sản phẩm → thấy sụt giảm dồn vào một kênh sau khi đổi chính sách giao hàng."
+        },
+        {
+          "t": "A/B test trang thanh toán",
+          "d": "So sánh 2 phiên bản, kiểm định thống kê → chọn bản tăng tỉ lệ đặt hàng. Case study khảo sát hôm nay cũng là việc của Data Analyst."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "3",
+      "name": "Data Scientist",
+      "tagline": "Xây mô hình để dự đoán và hỗ trợ ra quyết định.",
+      "roadmap": [
+        "Toán: xác suất thống kê, đại số tuyến tính",
+        "Python: pandas, scikit-learn",
+        "Machine Learning & đánh giá mô hình",
+        "Thiết kế thí nghiệm, hiểu nghiệp vụ"
+      ],
+      "work": [
+        "Biến vấn đề kinh doanh thành bài toán dự đoán",
+        "Xử lý dữ liệu, tạo đặc trưng, huấn luyện & đánh giá mô hình",
+        "Giải thích kết quả cho người không chuyên"
+      ],
+      "cases": [
+        {
+          "t": "Dự đoán khách hàng rời bỏ",
+          "d": "Nhà mạng / app dự đoán ai sắp ngừng dùng → chăm sóc khách hàng gửi ưu đãi đúng người, trước khi họ rời đi."
+        },
+        {
+          "t": "Chấm điểm tín dụng",
+          "d": "Ngân hàng dự đoán khả năng trả nợ từ lịch sử giao dịch → duyệt vay nhanh hơn, ít nợ xấu hơn."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "4",
+      "name": "ML Engineer",
+      "tagline": "Đưa mô hình từ notebook vào sản phẩm chạy thật.",
+      "roadmap": [
+        "Lập trình vững: Python, cấu trúc dữ liệu, Git",
+        "ML & Deep Learning: PyTorch",
+        "Backend & API: FastAPI, Docker",
+        "MLOps: triển khai, giám sát, huấn luyện lại"
+      ],
+      "work": [
+        "Đóng gói mô hình thành API — nhanh, ổn định",
+        "Tự động hoá pipeline huấn luyện & triển khai",
+        "Giám sát: dữ liệu đổi → độ chính xác giảm → huấn luyện lại"
+      ],
+      "cases": [
+        {
+          "t": "Gợi ý sản phẩm",
+          "d": "Sàn thương mại điện tử gợi ý “có thể bạn thích” cho hàng triệu người dùng, trả kết quả trong vài chục mili-giây."
+        },
+        {
+          "t": "Phát hiện gian lận",
+          "d": "Mỗi giao dịch thẻ được mô hình chấm điểm rủi ro ngay trước khi duyệt."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "5",
+      "name": "AI Engineer",
+      "tagline": "Xây ứng dụng dựa trên mô hình AI — đặc biệt là LLM.",
+      "roadmap": [
+        "Lập trình & backend vững",
+        "Deep Learning, NLP, Transformer",
+        "LLM: prompt, RAG, fine-tuning",
+        "Agentic systems, đánh giá & an toàn"
+      ],
+      "work": [
+        "Kết nối LLM với dữ liệu và công cụ của công ty",
+        "Thiết kế RAG, agent; đo chất lượng câu trả lời",
+        "Tối ưu chi phí, độ trễ; kiểm soát lỗi “bịa” (hallucination)"
+      ],
+      "cases": [
+        {
+          "t": "Chatbot tài liệu nội bộ",
+          "d": "Nhân viên hỏi về quy trình, chính sách → hệ thống RAG tìm đúng tài liệu và trả lời kèm nguồn."
+        },
+        {
+          "t": "Agent chăm sóc khách hàng",
+          "d": "Tự tra cứu đơn hàng, đổi lịch, tạo ticket bằng cách gọi API hệ thống — không chỉ trả lời bằng chữ."
+        }
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "1",
+      "question": "Ngành Data & AI ở Việt Nam hiện nay ra sao? Nếu “bong bóng AI” nổ thì sao?",
+      "quotes": [
+        "Nếu giả sử “bong bóng AI” nổ ra thì sẽ có thay đổi gì và những gì sẽ được yêu cầu đối với bọn em?"
+      ],
+      "stat": "18/29 bạn lo về cơ hội việc làm",
+      "answer": [],
+      "figure": {
+        "src": "assets/mad-paper-excerpt.jpg",
+        "alt": "Bài báo Self-Consuming Generative Models Go MAD",
+        "caption": "AI học lại từ dữ liệu do chính AI tạo ra → chất lượng và độ đa dạng giảm dần qua từng thế hệ (Model Autophagy Disorder).",
+        "source": "Alemohammad et al., “Self-Consuming Generative Models Go MAD”, Rice & Stanford, 2023 · arXiv:2307.01850"
+      }
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "2",
+      "question": "5–10 năm nữa Data Science còn “hot” ở Việt Nam và Đà Nẵng không?",
+      "quotes": [
+        "Liệu rằng 5 năm, 10 năm sau công việc liên quan đến Data Science có còn hot ở Việt Nam nói chung và Đà Nẵng nói riêng không?"
+      ],
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "3",
+      "question": "Lương các vị trí ra sao? AI thay thế một số vị trí thì nên làm gì?",
+      "quotes": [
+        "Mức lương trung bình cho các vị trí từ thấp tới cao.",
+        "Việc AI ngày càng phổ biến và thay thế một số vị trí của ngành thì từ bây giờ chúng ta nên làm gì?"
+      ],
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "8",
+      "question": "AI đang được ứng dụng thế nào? Chọn hướng AI phù hợp với mình ra sao?",
+      "quotes": [
+        "AI còn khá rộng nên mình muốn biết cách nó ứng dụng trong thực tế để xem ứng dụng nào phù hợp với bản thân nhất."
+      ],
+      "stat": "24/29 bạn chọn chủ đề AI",
+      "answer": []
+    },
+    {
+      "type": "section",
+      "sec": "work",
+      "n": "03",
+      "title": "Công việc thực tế",
+      "sub": "Đi làm thật sự trông như thế nào.",
+      "qs": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "4",
+      "question": "Một ngày làm việc của người trong ngành trông như thế nào?",
+      "quotes": [
+        "Em muốn hiểu rõ công việc của em thực sự sẽ trông như thế nào."
+      ],
+      "stat": "18/29 bạn chưa hình dung được công việc thực tế",
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "5",
+      "question": "Một ngày làm bao nhiêu giờ? Xong sớm có được về sớm không?",
+      "quotes": [
+        "Trong một ngày nhân viên sẽ làm trung bình bao nhiêu giờ? Nếu làm xong sớm thì có được về sớm không?"
+      ],
+      "answer": [
+        "8 tiếng một ngày, như bình thường.",
+        "Xong sớm có được về sớm không thì tuỳ công ty — nhưng xong sớm thì ngồi chơi thì có."
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "6",
+      "question": "Kiến thức ở trường khác gì công việc ở doanh nghiệp?",
+      "quotes": [
+        "Sinh viên cần chuẩn bị gì để không bị bỡ ngỡ?",
+        "Em chưa thực sự hiểu doanh nghiệp cần gì để em có thể đáp ứng được ạ."
+      ],
+      "answer": [
+        "Kiến thức dùng ở doanh nghiệp ít hơn nhiều so với ở trường.",
+        "Các bạn nên học vững kiến thức ở trường."
+      ],
+      "see": "14"
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "7",
+      "question": "Một dự án Data/AI chạy từ đầu đến cuối như thế nào?",
+      "quotes": [
+        "Kinh nghiệm làm dự án thực tế: quy trình xây dựng một dự án Data/AI từ đầu đến cuối."
+      ],
+      "stat": "17/29 bạn chưa biết cách làm dự án cá nhân",
+      "answer": []
+    },
+    {
+      "type": "section",
+      "sec": "skills",
+      "n": "04",
+      "title": "Kiến thức cần có",
+      "sub": "Học gì, theo thứ tự nào, học ở đâu.",
+      "qs": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "type": "ladder",
+      "sec": "skills",
+      "q": "9",
+      "question": "Cần học những gì? Bắt đầu từ đâu?",
+      "quotes": [
+        "Công việc cụ thể của role AI Engineer là gì và em nên bắt đầu xây dựng bộ kỹ năng như thế nào?"
+      ],
+      "steps": [
+        {
+          "t": "Toán",
+          "d": "Đại số tuyến tính · Xác suất thống kê · Giải tích"
+        },
+        {
+          "t": "Machine Learning",
+          "d": "Các thuật toán cốt lõi"
+        },
+        {
+          "t": "Deep Learning",
+          "d": "Neural Networks · CNN · RNN · LSTM · NLP…"
+        }
+      ],
+      "footer_label": "Tuyển dụng cần gì?",
+      "footer": [
+        "Phân tích dữ liệu",
+        "Xây dựng mô hình",
+        "Backend / API để chạy mô hình"
+      ],
+      "footer_note": "Rất đa dạng — nhưng xoay quanh 3 mảng này."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "10",
+      "question": "Có cần biết nhiều ngôn ngữ lập trình không?",
+      "quotes": [
+        "Việc học ngành này có yêu cầu hiểu biết nhiều ngôn ngữ không?"
+      ],
+      "stat": "10/29 bạn chưa biết nên học công cụ / ngôn ngữ nào",
+      "answer": [
+        "Không cần — Python là đủ.",
+        "Nắm vững một ngôn ngữ rồi thì học ngôn ngữ khác rất dễ.",
+        "Anh học Python, sau đó bị “bắt” chuyển sang PHP, JS, C#, Dart, Kotlin, Swift… và đều học được."
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "skills",
+      "q": "11",
+      "kicker": "Mới tiếp xúc lập trình chưa lâu, còn kịp không?",
+      "text": "Được chứ. Ai cũng phải <em>bắt đầu từ đâu đó.</em>",
+      "sub": "Quan trọng nhất vẫn là học và luyện tập."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "12",
+      "question": "Học thế nào cho hiệu quả? Điều gì nên tránh?",
+      "quotes": [
+        "Chia sẻ quá trình bắt đầu học, cách học sao cho hiệu quả và những điều nên tránh."
+      ],
+      "stat": "11/29 bạn chưa biết cách tự học, tìm tài liệu",
+      "answer": [
+        "Đi từ cơ bản lên.",
+        "Đừng bỏ qua chỗ mình thấy không hợp lý.",
+        "Thấy mình chưa hiểu hết thì luôn đặt câu hỏi."
+      ]
+    },
+    {
+      "type": "links",
+      "sec": "skills",
+      "q": "13",
+      "question": "Học từ đâu? Luyện tập ở đâu?",
+      "intro": "Tài liệu tốt nhất vẫn là đọc paper và đọc sách. Để bắt đầu:",
+      "links": [
+        {
+          "name": "Machine Learning cơ bản",
+          "url": "https://machinelearningcoban.com/",
+          "d": "Sách ML bằng tiếng Việt"
+        },
+        {
+          "name": "Deep-ML",
+          "url": "https://www.deep-ml.com/",
+          "d": "Bài tập ML từ con số 0"
+        },
+        {
+          "name": "LeetML",
+          "url": "https://leetml.org/",
+          "d": "“LeetCode” cho MLE / phỏng vấn AI"
+        },
+        {
+          "name": "TensorTonic",
+          "url": "https://www.tensortonic.com/",
+          "d": "Học ML qua code"
+        },
+        {
+          "name": "TorchLeet",
+          "url": "https://github.com/Exorust/TorchLeet",
+          "d": "Bài tập PyTorch"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "skills",
+      "q": "14",
+      "kicker": "Trường không dạy những gì doanh nghiệp cần?",
+      "text": "Thật ra <em>ngược lại</em> mới đúng.",
+      "sub": "Doanh nghiệp mới là bên đang hụt hơi khi áp dụng kiến thức học thuật."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "14",
+      "question": "Kiến thức ở trường có đủ để đi làm không?",
+      "quotes": [
+        "Những kiến thức, kỹ năng hoặc tư duy thực chiến nào mà doanh nghiệp rất cần nhưng sinh viên thường bị thiếu hụt?"
+      ],
+      "answer": [
+        "Bài toán thực tế chỉ giải được bằng kiến thức đại học hoặc học thuật bậc cao — không chỉ bằng kinh nghiệm nội bộ.",
+        "Nhiều kỹ sư xem thường kiến thức đại học nên bế tắc. Ngành dữ liệu & AI thấy rõ nhất.",
+        "Trước mắt: học vững lý thuyết trên lớp. Gặp bài toán thực tế rồi sẽ hiểu."
+      ]
+    },
+    {
+      "type": "ladder",
+      "sec": "skills",
+      "q": "15",
+      "question": "Tự xây một LLM từ đầu có khả thi không?",
+      "quotes": [
+        "Liệu việc tự mình xây dựng một mô hình ngôn ngữ lớn từ đầu mà không dựa vào bất kì mô hình có sẵn nào có khả thi hay không?"
+      ],
+      "lead": "Được — nhưng phân biệt rõ: làm để học thì dễ hơn nhiều; làm để thương mại hoá thì cần nguồn lực rất lớn.",
+      "steps": [
+        {
+          "t": "Neural Networks",
+          "d": ""
+        },
+        {
+          "t": "NLP cơ bản",
+          "d": ""
+        },
+        {
+          "t": "Transformer",
+          "d": ""
+        },
+        {
+          "t": "Simple LLM",
+          "d": ""
+        }
+      ],
+      "horizontal": true
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "15",
+      "question": "AI thay đổi liên tục — làm sao bắt kịp?",
+      "quotes": [
+        "AI luôn không ngừng thay đổi, vậy làm sao để có thể bắt kịp được những xu hướng đó?"
+      ],
+      "answer": [
+        "Đọc từ các kênh và blog: LinkedIn, Substack, Reddit.",
+        "Nhưng muốn đọc hiểu thì phải có nền tảng vững trước.",
+        "Nhiều thuật ngữ bị thương mại hoá mà không mang lại giá trị — cần nền tảng để phản biện và tự phản biện."
+      ]
+    },
+    {
+      "type": "tips",
+      "sec": "skills",
+      "q": "15",
+      "question": "AI trong game và giải trí",
+      "quotes": [
+        "AI được áp dụng như thế nào trong lĩnh vực giải trí, như ngành game?"
+      ],
+      "items": [
+        {
+          "t": "Bot",
+          "d": "Tương tác với thế giới game để tự động hoá"
+        },
+        {
+          "t": "Sinh ảnh 2D / 3D",
+          "d": "Tạo nhân vật, tài nguyên đồ hoạ"
+        },
+        {
+          "t": "Sinh code",
+          "d": "AI hỗ trợ lập trình game"
+        },
+        {
+          "t": "Nhạc & phim",
+          "d": "Đã có AI tạo nhạc, tạo phim — “nhưng anh vẫn thích đồ người làm hơn”"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "career",
+      "n": "05",
+      "title": "Profile &amp;<br>sự nghiệp",
+      "sub": "Nhà tuyển dụng cần gì, thăng tiến thế nào, sai lầm cần tránh.",
+      "qs": [
+        "16",
+        "17",
+        "18"
+      ]
+    },
+    {
+      "type": "timeline",
+      "sec": "career",
+      "q": "16",
+      "question": "Dự án, chứng chỉ, giải thưởng nào gây ấn tượng với nhà tuyển dụng?",
+      "quotes": [
+        "Nếu ai cũng có project cá nhân và một nơi thực tập thì yếu tố nào khác sẽ nổi bật trong mắt nhà tuyển dụng?"
+      ],
+      "stat": "26/29 bạn quan tâm thực tập & việc làm",
+      "lead": "Không có câu trả lời cố định — tuỳ công ty và dự án. Xu hướng tuyển dụng đổi liên tục:",
+      "items": [
+        {
+          "when": "~5 năm trước",
+          "what": "Computer Vision"
+        },
+        {
+          "when": "2–3 năm trước",
+          "what": "NLP & LLM"
+        },
+        {
+          "when": "Hiện nay",
+          "what": "Agentic systems"
+        },
+        {
+          "when": "5 năm tới",
+          "what": "Không ai biết"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "career",
+      "q": "16",
+      "kicker": "Vậy làm dự án cá nhân thế nào?",
+      "text": "Cái gì càng <em>cơ bản và nền tảng</em> thì tồn tại càng lâu.",
+      "sub": "Tập trung hiểu cái mình đang làm và học được gì — hơn là kết quả. Công nghệ đổi rất nhanh; nền tảng thì ở lại."
+    },
+    {
+      "type": "loop",
+      "sec": "career",
+      "q": "17",
+      "question": "Làm sao để thăng tiến nhanh?",
+      "quotes": [
+        "Làm sao để thăng tiến nhanh."
+      ],
+      "a": "Học",
+      "b": "Thực hành",
+      "text": "Đi làm sẽ mắc lỗi và thấy điểm yếu của mình → đó là lúc học. Có kiến thức rồi thì quay lại thực hành để mài giũa. Lặp lại.",
+      "aside_q": "“Liệu AI Engineer rồi cũng bị AI thay thế?”",
+      "aside_a": "AI Engineer bị AI thay thế rồi ai làm ra AI? 🤔"
+    },
+    {
+      "type": "tips",
+      "sec": "career",
+      "q": "18",
+      "question": "Những sai lầm thường gặp khi mới vào ngành",
+      "quotes": [
+        "Những lỗi phổ biến mà sinh viên mới ra trường thường mắc phải trong ngành?"
+      ],
+      "stat": "Được nhắc nhiều nhất ở phần kỳ vọng",
+      "items": [
+        {
+          "t": "Security",
+          "d": "Sai lầm anh hay gặp nhất. Không nhận ra lỗ hổng thì khi bị khai thác rất khó khắc phục."
+        },
+        {
+          "t": "Ước lượng thời gian",
+          "d": "Cộng thêm 20% vào ước lượng gốc. Ước sát quá thì mệt mình — làm outsource còn có thể phải đền hợp đồng."
+        },
+        {
+          "t": "Logging",
+          "d": "Log lại các luồng dữ liệu chính khi code — nhưng đừng log quá nhiều."
+        },
+        {
+          "t": "Dùng AI",
+          "d": "Dùng AI thì tốt, nhưng vẫn phải học. Output của AI luôn cần con người review."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "qa",
+      "n": "06",
+      "title": "Q&amp;A",
+      "sub": "Toàn bộ câu hỏi của các bạn — xem lại kèm số trang."
+    },
+    {
+      "type": "index",
+      "sec": "qa",
+      "title": "18 câu hỏi của các bạn (1/2)",
+      "groups": [
+        {
+          "name": "02 — Tổng quan ngành",
+          "qs": [
+            {
+              "id": "1",
+              "t": "Ngành Data & AI ở Việt Nam ra sao? Nếu “bong bóng AI” nổ thì sinh viên cần gì?"
+            },
+            {
+              "id": "2",
+              "t": "5–10 năm nữa Data Science còn “hot” ở Việt Nam, Đà Nẵng không?"
+            },
+            {
+              "id": "3",
+              "t": "Mức lương các vị trí? AI thay thế một số vị trí thì nên làm gì?"
+            },
+            {
+              "id": "8",
+              "t": "AI ứng dụng thực tế thế nào? Chọn hướng AI hợp với mình ra sao?"
+            }
+          ]
+        },
+        {
+          "name": "03 — Công việc thực tế",
+          "qs": [
+            {
+              "id": "4",
+              "t": "Một ngày làm việc trong ngành trông như thế nào?"
+            },
+            {
+              "id": "5",
+              "t": "Làm bao nhiêu giờ một ngày? Xong sớm có được về sớm?"
+            },
+            {
+              "id": "6",
+              "t": "Kiến thức ở trường khác gì công việc ở doanh nghiệp?"
+            },
+            {
+              "id": "7",
+              "t": "Một dự án Data/AI chạy từ đầu đến cuối thế nào?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "index",
+      "sec": "qa",
+      "title": "18 câu hỏi của các bạn (2/2)",
+      "groups": [
+        {
+          "name": "04 — Kiến thức cần có",
+          "qs": [
+            {
+              "id": "9",
+              "t": "Cần học những gì? Bắt đầu từ đâu? AI Engineer làm gì?"
+            },
+            {
+              "id": "10",
+              "t": "Có cần biết nhiều ngôn ngữ lập trình không?"
+            },
+            {
+              "id": "11",
+              "t": "Mới tiếp xúc lập trình chưa lâu, còn phát triển được không?"
+            },
+            {
+              "id": "12",
+              "t": "Học thế nào cho hiệu quả, điều gì nên tránh?"
+            },
+            {
+              "id": "13",
+              "t": "Tài liệu và bài tập để tự luyện?"
+            },
+            {
+              "id": "14",
+              "t": "Kiến thức ở trường có đủ để đi làm không?"
+            },
+            {
+              "id": "15",
+              "t": "Tự xây LLM từ đầu? Bắt kịp xu hướng AI? AI trong game?"
+            }
+          ]
+        },
+        {
+          "name": "05 — Profile & sự nghiệp",
+          "qs": [
+            {
+              "id": "16",
+              "t": "Dự án, chứng chỉ, giải thưởng nào gây ấn tượng với nhà tuyển dụng?"
+            },
+            {
+              "id": "17",
+              "t": "Làm sao thăng tiến nhanh? AI Engineer có bị AI thay thế?"
+            },
+            {
+              "id": "18",
+              "t": "Những sai lầm thường gặp khi mới vào ngành?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "qa",
+      "kicker": "Đến lượt các bạn",
+      "text": "Còn câu hỏi nào <em>chưa có ở đây?</em>",
+      "sub": "Hỏi thẳng — không có câu hỏi nào là ngớ ngẩn."
+    },
+    {
+      "type": "closing",
+      "sec": "end",
+      "title": "Mang về nhà",
+      "items": [
+        {
+          "t": "Nền tảng trước, xu hướng sau",
+          "d": "Toán, ML, DL — cái gì càng cơ bản càng tồn tại lâu."
+        },
+        {
+          "t": "Python là đủ để bắt đầu",
+          "d": "Vững một ngôn ngữ thì học ngôn ngữ khác rất nhanh."
+        },
+        {
+          "t": "Học → thực hành → lặp lại",
+          "d": "Con đường duy nhất để đi nhanh và đi xa."
+        },
+        {
+          "t": "AI là công cụ, không thay việc học",
+          "d": "Output của AI luôn cần con người review."
+        }
+      ],
+      "thanks": "Cảm ơn các bạn!",
+      "speaker": "Trần Quang Huyên"
+    }
+  ]
+}

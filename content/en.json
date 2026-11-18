@@ -1,0 +1,1203 @@
+{
+  "lang": "en",
+  "meta": {
+    "title": "Data & AI — Where do I start?",
+    "pending": "Answered live during the session",
+    "answer": "Answer",
+    "students_asked": "You asked",
+    "lesson": "Lesson",
+    "see_q": "Q",
+    "of": "/",
+    "page": "p.",
+    "roadmap": "Learning path",
+    "work": "Day-to-day work",
+    "cases": "Use case",
+    "role_of": "Role"
+  },
+  "sections": {
+    "intro": "Intro",
+    "case": "01 — Case study",
+    "industry": "02 — The industry",
+    "work": "03 — The real job",
+    "skills": "04 — What to learn",
+    "career": "05 — Profile & career",
+    "qa": "06 — Q&A",
+    "end": "Wrap-up"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "sec": "intro",
+      "kicker": "A talk for first-year Data Science & AI students",
+      "title_html": "Data &amp; AI —<br>where do I <em>start?</em>",
+      "sub": "What this field does, what to learn, and what the job really looks like — answered from your own questions.",
+      "speaker_label": "Speaker",
+      "speaker": "Trần Quang Huyên",
+      "meta_label": "Survey",
+      "meta": "29 responses · 18 questions"
+    },
+    {
+      "type": "speaker",
+      "sec": "intro",
+      "kicker": "About the speaker",
+      "name": "Trần Quang Huyên",
+      "role": "AI Engineer at Everfit",
+      "facts": [
+        {
+          "l": "Now",
+          "k": "Everfit",
+          "v": "AI Engineer"
+        },
+        {
+          "l": "Before",
+          "k": "Hekate",
+          "v": "AI Engineer"
+        },
+        {
+          "l": "Master's",
+          "k": "Electronics Engineering",
+          "v": "Specialized in AI · Da Nang University of Science and Technology"
+        },
+        {
+          "l": "Research",
+          "k": [
+            "AI in medical imaging",
+            "Quantum Machine Learning"
+          ],
+          "v": ""
+        }
+      ],
+      "pubs_label": "Recent publications · 2025",
+      "pubs": [
+        {
+          "t": "Efficient Circuit Classifier Design for Enhancing Quantum Self-Attention in Vision Transformers",
+          "v": "IEEE Globecom Workshops"
+        },
+        {
+          "t": "Comparative Analysis of Deep Learning Architectures for Brain Tumor Segmentation",
+          "v": "Int. Conf. on Advanced Technologies for Communications (ATC)"
+        }
+      ]
+    },
+    {
+      "type": "agenda",
+      "sec": "intro",
+      "title": "Today we'll cover",
+      "items": [
+        {
+          "n": "01",
+          "t": "Case study",
+          "d": "From your survey to an end-to-end data project"
+        },
+        {
+          "n": "02",
+          "t": "The industry",
+          "d": "Career roles, market, trends"
+        },
+        {
+          "n": "03",
+          "t": "The real job",
+          "d": "A working day, how projects run"
+        },
+        {
+          "n": "04",
+          "t": "What to learn",
+          "d": "What, in which order, and where"
+        },
+        {
+          "n": "05",
+          "t": "Profile & career",
+          "d": "What employers want, growth, mistakes"
+        },
+        {
+          "n": "06",
+          "t": "Q&A",
+          "d": "All 18 of your questions"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "case",
+      "n": "01",
+      "title": "Case study:<br>your survey",
+      "sub": "This talk is itself a small data project. Here is how it was built, end to end."
+    },
+    {
+      "type": "pipeline",
+      "sec": "case",
+      "title": "An end-to-end data project",
+      "steps": [
+        {
+          "n": "1",
+          "t": "Ask",
+          "d": "What should this talk cover?"
+        },
+        {
+          "n": "2",
+          "t": "Collect",
+          "d": "Google Form · 9 questions · 29 responses"
+        },
+        {
+          "n": "3",
+          "t": "Clean",
+          "d": "Export CSV · split answers · merge duplicates"
+        },
+        {
+          "n": "4",
+          "t": "Analyze",
+          "d": "Count · ratio · rank"
+        },
+        {
+          "n": "5",
+          "t": "Visualize",
+          "d": "Charts · tables"
+        },
+        {
+          "n": "6",
+          "t": "Act",
+          "d": "Design today's content"
+        }
+      ],
+      "tools": "Google Forms → CSV → Python → Notion → HTML slides"
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "1",
+      "title": "Ask the question",
+      "lead": "Start from the problem — not from the data.",
+      "points": [
+        "Problem: one talk, limited time, many possible topics",
+        "Question: what do you actually need to hear most?",
+        "Success: your real questions get answered"
+      ],
+      "lesson": "A clear question decides what data you need to collect."
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "2",
+      "title": "Collect the data",
+      "lead": "Designing a form is designing your data.",
+      "points": [
+        "Anonymous, name optional → more honest answers",
+        "Multiple choice to count · open text to capture real questions",
+        "9 questions, 3–5 minutes → most people finish"
+      ],
+      "callout": "Reality: the first version had 2 duplicate questions and 1 question that lost all its options — we fixed the form while it was live.",
+      "lesson": "Always test with a few people before sending it to everyone."
+    },
+    {
+      "type": "step",
+      "sec": "case",
+      "n": "3",
+      "title": "Clean the data",
+      "lead": "Real data is rarely usable as-is.",
+      "points": [
+        "Google Forms joins multiple answers with commas — but the answers themselves contain commas (“Python, SQL, Power BI…”)",
+        "→ Splitting on commas fails; match against the original option list instead",
+        "40+ open-text ideas → merged into 18 questions in 4 groups"
+      ],
+      "code": "for option in OPTIONS:\n    if option in answer:\n        counts[option] += 1",
+      "lesson": "Most of a data project's time is spent right here."
+    },
+    {
+      "type": "stat",
+      "sec": "case",
+      "kicker": "Step 4 · Analyze — Who are you?",
+      "big": "76%",
+      "caption": "have only read about Data & AI online — or never looked into it",
+      "detail": [
+        {
+          "k": "17",
+          "v": "read about it online, in books, on social media"
+        },
+        {
+          "k": "6",
+          "v": "learned some basics"
+        },
+        {
+          "k": "5",
+          "v": "never looked into it"
+        },
+        {
+          "k": "1",
+          "v": "built a small project"
+        }
+      ],
+      "insight": "→ Today stays high-level, light on algorithms."
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Step 5 · Visualize",
+      "title": "You want to hear about…",
+      "total": 29,
+      "items": [
+        {
+          "label": "Internships & jobs",
+          "count": 26
+        },
+        {
+          "label": "Overview of Data & AI",
+          "count": 25
+        },
+        {
+          "label": "Artificial intelligence",
+          "count": 24
+        },
+        {
+          "label": "Career paths",
+          "count": 22
+        },
+        {
+          "label": "Career growth",
+          "count": 21
+        },
+        {
+          "label": "Data analytics",
+          "count": 21
+        },
+        {
+          "label": "Studying & research",
+          "count": 20
+        },
+        {
+          "label": "Foundations",
+          "count": 20
+        },
+        {
+          "label": "Real projects",
+          "count": 19
+        },
+        {
+          "label": "AI applications",
+          "count": 18
+        },
+        {
+          "label": "Tools & technology",
+          "count": 17
+        },
+        {
+          "label": "Essential skills",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Step 5 · Visualize",
+      "title": "What worries you most",
+      "total": 29,
+      "items": [
+        {
+          "label": "Can't picture the real job",
+          "count": 18
+        },
+        {
+          "label": "Worried about job prospects",
+          "count": 18
+        },
+        {
+          "label": "Don't know how to build projects",
+          "count": 17
+        },
+        {
+          "label": "Don't know where to start coding",
+          "count": 15
+        },
+        {
+          "label": "Don't fully understand the major",
+          "count": 12
+        },
+        {
+          "label": "Don't know how to self-study",
+          "count": 11
+        },
+        {
+          "label": "Don't know which tools / languages",
+          "count": 10
+        },
+        {
+          "label": "Math & statistics feel hard",
+          "count": 9
+        },
+        {
+          "label": "Don't know how to learn with AI",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "type": "bars",
+      "sec": "case",
+      "kicker": "Step 5 · Visualize",
+      "title": "After today, you want to…",
+      "total": 29,
+      "unit": "count",
+      "items": [
+        {
+          "label": "Have a 4-year study roadmap",
+          "count": 7
+        },
+        {
+          "label": "Understand the field better",
+          "count": 6
+        },
+        {
+          "label": "Know what to learn first",
+          "count": 6
+        },
+        {
+          "label": "Get clearer career direction",
+          "count": 3
+        },
+        {
+          "label": "Understand the workplace",
+          "count": 3
+        },
+        {
+          "label": "Feel more motivated",
+          "count": 2
+        },
+        {
+          "label": "Connect with people in the field",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "sec": "case",
+      "kicker": "Step 6 · Act",
+      "title": "From insight to today's content",
+      "rows": [
+        {
+          "insight": "90% want to know about internships & jobs",
+          "action": "05 — Profile & career"
+        },
+        {
+          "insight": "62% can't picture the real job",
+          "action": "03 — The real job"
+        },
+        {
+          "insight": "Top wish: a 4-year study roadmap",
+          "action": "04 — What to learn"
+        },
+        {
+          "insight": "76% are just getting started",
+          "action": "Stay high-level, few algorithms"
+        }
+      ]
+    },
+    {
+      "type": "lessons",
+      "sec": "case",
+      "title": "3 lessons from a very small project",
+      "items": [
+        {
+          "t": "Question first, data second",
+          "d": "Know which decision you need to make, then design how to collect."
+        },
+        {
+          "t": "Real data is always “dirty”",
+          "d": "Broken forms, commas inside answers, abbreviations — all normal."
+        },
+        {
+          "t": "Analysis must lead to action",
+          "d": "A nice chart isn't enough; the result has to change a decision."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "industry",
+      "n": "02",
+      "title": "The industry",
+      "sub": "Career roles, the market, and AI in practice.",
+      "qs": [
+        "1",
+        "2",
+        "3",
+        "8"
+      ]
+    },
+    {
+      "type": "venn",
+      "sec": "industry",
+      "kicker": "Before we talk about jobs",
+      "title": "How do AI, ML, DL and Data Science relate?",
+      "labels": {
+        "ai": [
+          "Artificial",
+          "Intelligence"
+        ],
+        "ml": [
+          "Machine",
+          "Learning"
+        ],
+        "dl": [
+          "Deep",
+          "Learning"
+        ],
+        "ds": [
+          "Data",
+          "Science"
+        ]
+      },
+      "defs": [
+        {
+          "t": "Artificial Intelligence",
+          "d": "Machines doing tasks that normally need human intelligence."
+        },
+        {
+          "t": "Machine Learning",
+          "d": "A branch of AI: machines learn patterns from data instead of hand-written rules."
+        },
+        {
+          "t": "Deep Learning",
+          "d": "A branch of ML: many-layered neural networks — images, speech, language (LLMs)."
+        },
+        {
+          "t": "Data Science",
+          "d": "Getting insight from data with statistics and analysis — using ML/DL when needed."
+        }
+      ],
+      "note": "The overlap: Data Science uses ML as a tool — but not all Data Science work is AI."
+    },
+    {
+      "type": "roles",
+      "sec": "industry",
+      "kicker": "What can you do with a Data Science & AI degree?",
+      "title": "5 core roles — one flow of data",
+      "items": [
+        {
+          "name": "Data Engineer",
+          "q": "Is the data ready?",
+          "tools": "SQL · Spark · Airflow"
+        },
+        {
+          "name": "Data Analyst",
+          "q": "What happened, and why?",
+          "tools": "SQL · Excel · Power BI"
+        },
+        {
+          "name": "Data Scientist",
+          "q": "What will happen next?",
+          "tools": "Python · Statistics · ML"
+        },
+        {
+          "name": "ML Engineer",
+          "q": "How does the model run for real?",
+          "tools": "PyTorch · APIs · MLOps"
+        },
+        {
+          "name": "AI Engineer",
+          "q": "How do we build AI products?",
+          "tools": "LLM · RAG · Agents"
+        }
+      ],
+      "more": "Also: BI Analyst · MLOps Engineer · Research Scientist · Data Product Manager…"
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "1",
+      "name": "Data Engineer",
+      "tagline": "Builds the “pipes” so data arrives correct, complete, and on time.",
+      "roadmap": [
+        "Solid SQL & Python",
+        "Databases, data-warehouse modeling",
+        "ETL/ELT & orchestration: Airflow, dbt",
+        "Big data & cloud: Spark, Kafka, AWS/GCP"
+      ],
+      "work": [
+        "Collect data from many sources: apps, web, sales systems",
+        "Clean, standardize, load into the warehouse",
+        "Monitor pipelines: fix late, missing, or wrong data"
+      ],
+      "cases": [
+        {
+          "t": "Retail data warehouse",
+          "d": "Sales data is scattered across stores, web, and app → unify it in one warehouse, refreshed nightly → the whole company shares one revenue number."
+        },
+        {
+          "t": "Real-time data",
+          "d": "A ride-hailing app needs driver locations every second → a streaming pipeline (Kafka) feeds the matching system."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "2",
+      "name": "Data Analyst",
+      "tagline": "Turns data into answers to business questions.",
+      "roadmap": [
+        "SQL · Excel / Google Sheets",
+        "Descriptive statistics & hypothesis testing",
+        "BI: Power BI, Tableau",
+        "Data storytelling, business understanding"
+      ],
+      "work": [
+        "Take questions from sales and marketing",
+        "Query, analyze, find root causes",
+        "Build dashboards, reports, recommend actions"
+      ],
+      "cases": [
+        {
+          "t": "Monthly revenue down 15%",
+          "d": "Break it down by region, channel, product → the drop is concentrated in one channel after a delivery-policy change."
+        },
+        {
+          "t": "Checkout A/B test",
+          "d": "Compare 2 versions with a statistical test → ship the one that lifts orders. Today's survey case study is Data Analyst work too."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "3",
+      "name": "Data Scientist",
+      "tagline": "Builds models that predict and support decisions.",
+      "roadmap": [
+        "Math: probability & statistics, linear algebra",
+        "Python: pandas, scikit-learn",
+        "Machine Learning & model evaluation",
+        "Experiment design, domain knowledge"
+      ],
+      "work": [
+        "Turn business problems into prediction problems",
+        "Prepare data, engineer features, train & evaluate models",
+        "Explain results to non-experts"
+      ],
+      "cases": [
+        {
+          "t": "Customer churn prediction",
+          "d": "A telco / app predicts who is about to quit → customer care sends offers to the right people before they leave."
+        },
+        {
+          "t": "Credit scoring",
+          "d": "A bank predicts repayment ability from transaction history → faster loan approval, fewer bad debts."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "4",
+      "name": "ML Engineer",
+      "tagline": "Takes models from a notebook into a product that runs for real.",
+      "roadmap": [
+        "Strong programming: Python, data structures, Git",
+        "ML & Deep Learning: PyTorch",
+        "Backend & APIs: FastAPI, Docker",
+        "MLOps: deploy, monitor, retrain"
+      ],
+      "work": [
+        "Package models as fast, stable APIs",
+        "Automate training & deployment pipelines",
+        "Monitor: data shifts → accuracy drops → retrain"
+      ],
+      "cases": [
+        {
+          "t": "Product recommendations",
+          "d": "An e-commerce site shows “you may also like” to millions of users, answering in tens of milliseconds."
+        },
+        {
+          "t": "Fraud detection",
+          "d": "Every card transaction is risk-scored by a model right before approval."
+        }
+      ]
+    },
+    {
+      "type": "role",
+      "sec": "industry",
+      "n": "5",
+      "name": "AI Engineer",
+      "tagline": "Builds applications on top of AI models — especially LLMs.",
+      "roadmap": [
+        "Solid programming & backend",
+        "Deep Learning, NLP, Transformers",
+        "LLMs: prompting, RAG, fine-tuning",
+        "Agentic systems, evaluation & safety"
+      ],
+      "work": [
+        "Connect LLMs to company data and tools",
+        "Design RAG and agents; measure answer quality",
+        "Optimize cost and latency; control hallucinations"
+      ],
+      "cases": [
+        {
+          "t": "Internal docs chatbot",
+          "d": "Staff ask about processes and policies → a RAG system finds the right document and answers with sources."
+        },
+        {
+          "t": "Customer-service agent",
+          "d": "Looks up orders, reschedules, files tickets by calling system APIs — not just replying with text."
+        }
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "1",
+      "question": "What's the Data & AI market like in Vietnam? What if the “AI bubble” bursts?",
+      "quotes": [
+        "If the “AI bubble” bursts, what changes, and what will be expected of us?"
+      ],
+      "stat": "18/29 are worried about job prospects",
+      "answer": [],
+      "figure": {
+        "src": "assets/mad-paper-excerpt.jpg",
+        "alt": "Paper: Self-Consuming Generative Models Go MAD",
+        "caption": "AI trained on AI-generated data → quality and diversity drop with every generation (Model Autophagy Disorder).",
+        "source": "Alemohammad et al., “Self-Consuming Generative Models Go MAD”, Rice & Stanford, 2023 · arXiv:2307.01850"
+      }
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "2",
+      "question": "Will Data Science still be “hot” in Vietnam and Da Nang in 5–10 years?",
+      "quotes": [
+        "In 5 or 10 years, will Data Science jobs still be hot in Vietnam in general and in Da Nang in particular?"
+      ],
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "3",
+      "question": "What do the roles pay? If AI replaces some roles, what should we do?",
+      "quotes": [
+        "Average salary for each role, from junior to senior.",
+        "As AI becomes common and replaces some roles in the field, what should we do starting now?"
+      ],
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "industry",
+      "q": "8",
+      "question": "How is AI used in practice? How do I pick the AI direction that fits me?",
+      "quotes": [
+        "AI is very broad, so I want to see how it's applied in practice to find which application suits me best."
+      ],
+      "stat": "24/29 chose the AI topic",
+      "answer": []
+    },
+    {
+      "type": "section",
+      "sec": "work",
+      "n": "03",
+      "title": "The real job",
+      "sub": "What working in the field actually looks like.",
+      "qs": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "4",
+      "question": "What does a working day in this field look like?",
+      "quotes": [
+        "I want to understand what my job will actually look like."
+      ],
+      "stat": "18/29 can't picture the real job yet",
+      "answer": []
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "5",
+      "question": "How many hours a day? Can I leave early if I finish early?",
+      "quotes": [
+        "How many hours does an employee work on average? If I finish early, can I go home early?"
+      ],
+      "answer": [
+        "8 hours a day, like any normal job.",
+        "Whether you can leave early depends on the company — but finishing early does usually mean some free time."
+      ]
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "6",
+      "question": "How is school knowledge different from work at a company?",
+      "quotes": [
+        "What should students prepare so they aren't caught off guard?",
+        "I don't really understand what companies need from me yet."
+      ],
+      "answer": [
+        "Companies use far less knowledge than you learn at school.",
+        "So learn what's taught at school solidly."
+      ],
+      "see": "14"
+    },
+    {
+      "type": "qa",
+      "sec": "work",
+      "q": "7",
+      "question": "How does a Data/AI project run from start to finish?",
+      "quotes": [
+        "Real project experience: the process of building a Data/AI project end to end."
+      ],
+      "stat": "17/29 don't know how to build a personal project",
+      "answer": []
+    },
+    {
+      "type": "section",
+      "sec": "skills",
+      "n": "04",
+      "title": "What to learn",
+      "sub": "What, in which order, and where.",
+      "qs": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "type": "ladder",
+      "sec": "skills",
+      "q": "9",
+      "question": "What should I learn? Where do I start?",
+      "quotes": [
+        "What does an AI Engineer actually do, and how should I start building the skill set employers want?"
+      ],
+      "steps": [
+        {
+          "t": "Math",
+          "d": "Linear algebra · Probability & statistics · Calculus"
+        },
+        {
+          "t": "Machine Learning",
+          "d": "The core algorithms"
+        },
+        {
+          "t": "Deep Learning",
+          "d": "Neural Networks · CNN · RNN · LSTM · NLP…"
+        }
+      ],
+      "footer_label": "What do employers hire for?",
+      "footer": [
+        "Data analysis",
+        "Model building",
+        "Backend / APIs to serve models"
+      ],
+      "footer_note": "Very diverse — but it revolves around these three."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "10",
+      "question": "Do I need to know many programming languages?",
+      "quotes": [
+        "Does this field require knowing many languages?"
+      ],
+      "stat": "10/29 don't know which tools / languages to learn",
+      "answer": [
+        "No — Python is enough.",
+        "Once you master one language, picking up others is easy.",
+        "I learned Python, then got “pushed” into PHP, JS, C#, Dart, Kotlin, Swift… and handled them all."
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "skills",
+      "q": "11",
+      "kicker": "I only started coding recently — is it too late?",
+      "text": "Of course not. Everyone has to <em>start somewhere.</em>",
+      "sub": "What matters most is learning and practicing."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "12",
+      "question": "How do I learn effectively? What should I avoid?",
+      "quotes": [
+        "Share how you started, how to learn effectively, and what to avoid."
+      ],
+      "stat": "11/29 don't know how to self-study or find materials",
+      "answer": [
+        "Build up from the basics.",
+        "Don't skip the parts that don't make sense to you.",
+        "Whenever you feel you don't fully get it, ask questions."
+      ]
+    },
+    {
+      "type": "links",
+      "sec": "skills",
+      "q": "13",
+      "question": "Where to learn? Where to practice?",
+      "intro": "The best material is still papers and books. To get started:",
+      "links": [
+        {
+          "name": "Machine Learning cơ bản",
+          "url": "https://machinelearningcoban.com/",
+          "d": "ML book in Vietnamese"
+        },
+        {
+          "name": "Deep-ML",
+          "url": "https://www.deep-ml.com/",
+          "d": "ML exercises from scratch"
+        },
+        {
+          "name": "LeetML",
+          "url": "https://leetml.org/",
+          "d": "“LeetCode” for MLE / AI interviews"
+        },
+        {
+          "name": "TensorTonic",
+          "url": "https://www.tensortonic.com/",
+          "d": "Learn ML through code"
+        },
+        {
+          "name": "TorchLeet",
+          "url": "https://github.com/Exorust/TorchLeet",
+          "d": "PyTorch exercises"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "skills",
+      "q": "14",
+      "kicker": "Does school skip what companies need?",
+      "text": "Actually, it's the <em>other way around.</em>",
+      "sub": "Companies are the ones struggling to apply academic knowledge."
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "14",
+      "question": "Is what I learn at university enough for work?",
+      "quotes": [
+        "Which practical knowledge, skills, or mindsets do companies need that students usually lack?"
+      ],
+      "answer": [
+        "Real business problems can only be solved with university-level or advanced academic knowledge — not internal experience alone.",
+        "Many engineers look down on university knowledge and get stuck. It's most obvious in data & AI.",
+        "For now: master the theory in class. You'll understand once you hit real problems."
+      ]
+    },
+    {
+      "type": "ladder",
+      "sec": "skills",
+      "q": "15",
+      "question": "Is building an LLM from scratch feasible?",
+      "quotes": [
+        "Is it feasible to build a large language model from scratch, without relying on any existing model?"
+      ],
+      "lead": "Yes — but be clear: building to learn is far easier; building to commercialize takes enormous resources.",
+      "steps": [
+        {
+          "t": "Neural Networks",
+          "d": ""
+        },
+        {
+          "t": "Basic NLP",
+          "d": ""
+        },
+        {
+          "t": "Transformer",
+          "d": ""
+        },
+        {
+          "t": "Simple LLM",
+          "d": ""
+        }
+      ],
+      "horizontal": true
+    },
+    {
+      "type": "qa",
+      "sec": "skills",
+      "q": "15",
+      "question": "AI changes constantly — how do I keep up?",
+      "quotes": [
+        "AI never stops changing, so how can we keep up with the trends?"
+      ],
+      "answer": [
+        "Follow channels and blogs: LinkedIn, Substack, Reddit.",
+        "But to understand what you read, you need solid foundations first.",
+        "Many buzzwords are hype with little real value — foundations let you question them, and yourself."
+      ]
+    },
+    {
+      "type": "tips",
+      "sec": "skills",
+      "q": "15",
+      "question": "AI in games and entertainment",
+      "quotes": [
+        "How is AI applied in entertainment, like the game industry?"
+      ],
+      "items": [
+        {
+          "t": "Bots",
+          "d": "Interact with game worlds to automate play"
+        },
+        {
+          "t": "2D / 3D generation",
+          "d": "Create characters and graphic assets"
+        },
+        {
+          "t": "Code generation",
+          "d": "AI that helps program games"
+        },
+        {
+          "t": "Music & film",
+          "d": "AI can make music and film — “but I still prefer things made by people”"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "career",
+      "n": "05",
+      "title": "Profile &amp;<br>career",
+      "sub": "What employers want, how to grow, mistakes to avoid.",
+      "qs": [
+        "16",
+        "17",
+        "18"
+      ]
+    },
+    {
+      "type": "timeline",
+      "sec": "career",
+      "q": "16",
+      "question": "Which projects, certificates, or awards impress employers?",
+      "quotes": [
+        "If everyone has personal projects and an internship, what else will stand out to employers?"
+      ],
+      "stat": "26/29 care about internships & jobs",
+      "lead": "There's no fixed answer — it depends on the company and project. Hiring trends keep shifting:",
+      "items": [
+        {
+          "when": "~5 years ago",
+          "what": "Computer Vision"
+        },
+        {
+          "when": "2–3 years ago",
+          "what": "NLP & LLMs"
+        },
+        {
+          "when": "Today",
+          "what": "Agentic systems"
+        },
+        {
+          "when": "Next 5 years",
+          "what": "Nobody knows"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "career",
+      "q": "16",
+      "kicker": "So how should I do personal projects?",
+      "text": "The more <em>fundamental</em> something is, the longer it lasts.",
+      "sub": "Focus on understanding what you build and what you learn — more than the result. Technology changes fast; fundamentals stay."
+    },
+    {
+      "type": "loop",
+      "sec": "career",
+      "q": "17",
+      "question": "How do I grow fast?",
+      "quotes": [
+        "How do I get promoted quickly?"
+      ],
+      "a": "Learn",
+      "b": "Practice",
+      "text": "At work you'll make mistakes and see your weaknesses → that's when you learn. With the new knowledge, go back and practice to sharpen it. Repeat.",
+      "aside_q": "“Will AI Engineers be replaced by AI too?”",
+      "aside_a": "If AI Engineers get replaced by AI, who builds the AI? 🤔"
+    },
+    {
+      "type": "tips",
+      "sec": "career",
+      "q": "18",
+      "question": "Common mistakes when you're new",
+      "quotes": [
+        "What mistakes do fresh graduates commonly make in this field?"
+      ],
+      "stat": "Most-mentioned wish in the survey",
+      "items": [
+        {
+          "t": "Security",
+          "d": "My most frequent mistake. If you don't see a vulnerability, it's very hard to fix once it's exploited."
+        },
+        {
+          "t": "Time estimates",
+          "d": "Add 20% to your original estimate. Estimate too tight and you burn out — in outsourcing you may even owe contract penalties."
+        },
+        {
+          "t": "Logging",
+          "d": "Log the main data flows when you code — but don't log too much."
+        },
+        {
+          "t": "Using AI",
+          "d": "Using AI is great, but you still have to learn. AI output always needs human review."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "sec": "qa",
+      "n": "06",
+      "title": "Q&amp;A",
+      "sub": "All your questions — with page numbers to review later."
+    },
+    {
+      "type": "index",
+      "sec": "qa",
+      "title": "Your 18 questions (1/2)",
+      "groups": [
+        {
+          "name": "02 — The industry",
+          "qs": [
+            {
+              "id": "1",
+              "t": "What's the Data & AI market like in Vietnam? What if the “AI bubble” bursts?"
+            },
+            {
+              "id": "2",
+              "t": "Will Data Science still be “hot” in Vietnam and Da Nang in 5–10 years?"
+            },
+            {
+              "id": "3",
+              "t": "What do the roles pay? What to do if AI replaces some roles?"
+            },
+            {
+              "id": "8",
+              "t": "How is AI used in practice? How do I pick a direction?"
+            }
+          ]
+        },
+        {
+          "name": "03 — The real job",
+          "qs": [
+            {
+              "id": "4",
+              "t": "What does a working day look like?"
+            },
+            {
+              "id": "5",
+              "t": "How many hours a day? Can I leave early?"
+            },
+            {
+              "id": "6",
+              "t": "How is school knowledge different from company work?"
+            },
+            {
+              "id": "7",
+              "t": "How does a Data/AI project run end to end?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "index",
+      "sec": "qa",
+      "title": "Your 18 questions (2/2)",
+      "groups": [
+        {
+          "name": "04 — What to learn",
+          "qs": [
+            {
+              "id": "9",
+              "t": "What should I learn first? What does an AI Engineer do?"
+            },
+            {
+              "id": "10",
+              "t": "Do I need many programming languages?"
+            },
+            {
+              "id": "11",
+              "t": "I started coding recently — can I still grow?"
+            },
+            {
+              "id": "12",
+              "t": "How to learn effectively, and what to avoid?"
+            },
+            {
+              "id": "13",
+              "t": "Materials and exercises for self-study?"
+            },
+            {
+              "id": "14",
+              "t": "Is university knowledge enough for work?"
+            },
+            {
+              "id": "15",
+              "t": "Build an LLM from scratch? Keep up with AI? AI in games?"
+            }
+          ]
+        },
+        {
+          "name": "05 — Profile & career",
+          "qs": [
+            {
+              "id": "16",
+              "t": "Which projects, certificates, awards impress employers?"
+            },
+            {
+              "id": "17",
+              "t": "How to grow fast? Will AI replace AI Engineers?"
+            },
+            {
+              "id": "18",
+              "t": "Common mistakes when you're new?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "sec": "qa",
+      "kicker": "Your turn",
+      "text": "Any question <em>not on this list?</em>",
+      "sub": "Just ask — there are no silly questions."
+    },
+    {
+      "type": "closing",
+      "sec": "end",
+      "title": "Take home",
+      "items": [
+        {
+          "t": "Foundations first, trends later",
+          "d": "Math, ML, DL — the more fundamental, the longer it lasts."
+        },
+        {
+          "t": "Python is enough to start",
+          "d": "Master one language and the rest come fast."
+        },
+        {
+          "t": "Learn → practice → repeat",
+          "d": "The only way to go fast and go far."
+        },
+        {
+          "t": "AI is a tool, not a substitute for learning",
+          "d": "AI output always needs human review."
+        }
+      ],
+      "thanks": "Thank you!",
+      "speaker": "Trần Quang Huyên"
+    }
+  ]
+}
